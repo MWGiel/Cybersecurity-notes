@@ -1,18 +1,18 @@
-# 🔐 Security Researcher | Penetration Tester
+#  Security Researcher | Penetration Tester
 
 **Focus:** Web security, vulnerability research, security automation  
 **Currently:** Security tests & documenting learning journey
 
-## 🛠️ Tech Stack
+## Tech Stack
 - **Testing:** Burp Suite, OWASP ZAP, sqlmap, nmap
 - **Languages:** Python, JavaScript, Bash, SQL
 - **Platforms:** Linux, Docker, Git
 
-## 📁 Recent Projects
+##  Recent Projects
 - **CTF Writeups** - Solutions from HTB/TryHackMe challenges  
 - **Tool Development** - Custom security utilities
 
-## 🎯 Specializations
+## Specializations
 - Web Application Security (OWASP Top 10)
 - Vulnerability Discovery & Analysis
 - Security Automation & Tooling
