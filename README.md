@@ -1,26 +1,18 @@
-# MWGSEC - Security Audits
+# 🔐 Security Researcher | Penetration Tester
 
-Professional website security auditing services. Specializing in XSS testing, security headers configuration, and 24/7 monitoring.
+**Focus:** Web security, vulnerability research, security automation  
+**Currently:** Security tests & documenting learning journey
 
-##  Services
-- **Security Audits** - XSS testing, CSP/HSTS headers analysis, subdomain scanning
-- **24/7 Monitoring** - Uptime monitoring with SMS/email alerts
-- **White-label Solutions** - For developers and agencies
+## 🛠️ Tech Stack
+- **Testing:** Burp Suite, OWASP ZAP, sqlmap, nmap
+- **Languages:** Python, JavaScript, Bash, SQL
+- **Platforms:** Linux, Docker, Git
 
-##  Quick Start
-Visit [mwgsec.com](https://mwgsec.com) or email me
+## 📁 Recent Projects
+- **CTF Writeups** - Solutions from HTB/TryHackMe challenges  
+- **Tool Development** - Custom security utilities
 
-##  Tech Stack
-- **Frontend:** HTML, CSS, JavaScript
-- **Hosting:** Netlify 
-- **Security:** A+ rated headers configuration
-- **Domain:** mwgsec.com
-
-##  Performance
-- **Security Headers:** A+ (securityheaders.com)
-- **SSL:** A+ (SSL Labs)
-- **Uptime:** 99.9% (via Netlify)
-
-##  Contact
-- [**Email**](mailto:mikolajwegielewski0@gmail.com)
-- [**Discord**](https://discord.gg/rnU42nbsQ6)
+## 🎯 Specializations
+- Web Application Security (OWASP Top 10)
+- Vulnerability Discovery & Analysis
+- Security Automation & Tooling
