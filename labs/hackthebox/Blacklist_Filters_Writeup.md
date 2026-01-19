@@ -1,5 +1,4 @@
 ## Try to find an extension that is not blacklisted and can execute PHP code on the web server, and use it to read “/flag.txt”
----
 > <?php echo “Hi MWG”; ?>
 - With this payload we will fuzz the file extensions to see if the page displays the text
 - After fuzzing where we uncheck the url encoding with the "." character (we don't need it), I discover that only the most popular extensions are blocked, such as php or php4
