@@ -24,5 +24,8 @@ Since the URL scheme is part of the URL supplied to the web application, let us 
 As we have seen previously, we can use SSRF to access restricted internal endpoints. However, we are restricted to GET requests as there is no way to send a POST request with the http:// URL scheme. For instance, let us consider a different version of the previous web application. Assuming we identified the internal endpoint /admin.php just like before
 > POST /admin.php HTTP/1.1 Host: dateserver.htb Content-Length: 13 Content-Type: application/x-www-form-urlencoded  adminpw=admin
 
+# Exploiting Blind SSRF
+Exploiting blind SSRF vulnerabilities is generally severely limited compared to non-blind SSRF vulnerabilities. However, depending on the web application's behavior, we might still be able to conduct a (restricted) local port scan of the system, provided the response differs for open and closed ports.
+
 
 
