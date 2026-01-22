@@ -18,8 +18,11 @@ Web applications can utilize templating engines and server-side templates to gen
 Similar to server-side templates, server-side includes (SSI) can be used to generate HTML responses dynamically. SSI directives instruct the web server to include additional content dynamically. These directives are embedded in HTML files. For instance, SSI can be used to include content that is present in all HTML pages, such as headers or footers. When an attacker can inject commands into the SSI directives, Server-Side Includes (SSI) Injection can occur. SSI injection can lead to data leakage or even remote code execution.
 
 ---
+## Local File Inclusion (LFI)
 Since the URL scheme is part of the URL supplied to the web application, let us attempt to read local files from the file system using the file:// URL scheme. We can achieve this by supplying the URL file:///etc/passwd.
+## The gopher Protocol
+As we have seen previously, we can use SSRF to access restricted internal endpoints. However, we are restricted to GET requests as there is no way to send a POST request with the http:// URL scheme. For instance, let us consider a different version of the previous web application. Assuming we identified the internal endpoint /admin.php just like before
+> POST /admin.php HTTP/1.1 Host: dateserver.htb Content-Length: 13 Content-Type: application/x-www-form-urlencoded  adminpw=admin
 
-# XSLT Server-Side Injection
-XSLT (Extensible Stylesheet Language Transformations) server-side injection is a vulnerability that arises when an attacker can manipulate XSLT transformations performed on the server. XSLT is a language used to transform XML documents into other formats, such as HTML, and is commonly employed in web applications to generate content dynamically. In the context of XSLT server-side injection, attackers exploit weaknesses in how XSLT transformations are handled, allowing them to inject and execute arbitrary code on the server.
+
 
