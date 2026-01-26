@@ -6,3 +6,4 @@
 - I scan the ports on which the machine is running
 - 80 and 3306 (sql port)
 - ffuf -w /usr/share/seclists/Discovery/Web-Content/directory-list-lowercase-2.3-small.txt -u http://83.136.253.132:57554 -X POST -H "Content-Type: application/x-www-form-urlencoded" -d "api=http://truckapi.htb/FUZZ.php"
+- another day of trying
