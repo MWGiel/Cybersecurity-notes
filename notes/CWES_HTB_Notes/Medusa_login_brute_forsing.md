@@ -17,3 +17,5 @@ ACCOUNT FOUND: [ssh] Host: 94.237.120.137 User: sshuser Password: 1q2w3e4r5t [SU
 ACCOUNT FOUND: [ftp] Host: 127.0.0.1 User: ftpuser Password: qqww1122 [SUCCESS]
 > ftp ftp://ftpuser:<FTPUSER_PASSWORD>@localhost
 > ftp> ls /
+> ftp> more flag.txt
+And got a flag :)
