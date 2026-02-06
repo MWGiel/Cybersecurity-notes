@@ -5,5 +5,5 @@ Suppose a session token does not provide sufficient randomness and is cryptograp
 The simplest form of predictable session tokens contains encoded data we can tamper with.
 
 > Cookie: session=757365723d6874622d7374646e743b726f6c653d75736572 = user=htb-stdnt;role=user
->  757365723D6874622D7374646E743B726F6C653D61646D696E = user=htb-stdnt;role-admin
-and got a flag :)
+> 757365723D6874622D7374646E743B726F6C653D61646D696E = user=htb-stdnt;role-admin
+- and got a flag :)
