@@ -8,7 +8,7 @@ I immediately saw the option to create a new user, so I did so with the password
 After logging in, I was redirected to /profile.php, which didn't pique my interest at first.<br>  
 ---
 <img width="210" height="34" alt="obraz" src="https://github.com/user-attachments/assets/18ae5712-779b-4de3-9a68-301199eb796f" /><br>  
-I brute-forced the username because I noticed that the application responded differently when I entered an existing name regardless of the password:<br>  
+I brute-forced the username because I noticed that the application responded differently when I entered an existing name regardless of the password<br>  
 Invalid credentials Or Unknown username or password.<br> 
 I got the login and I also managed to brute force the password using the rockyou.txt list, matching it to the password format<br>  
 and I got a screen with an OTP code:<br>  
