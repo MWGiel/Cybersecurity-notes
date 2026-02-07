@@ -20,7 +20,7 @@ I went back to the user and remembered that you can force the application to sho
 <img width="690" height="77" alt="obraz" src="https://github.com/user-attachments/assets/d9b8a1fe-cfdc-4f37-b77c-cba222de5962" /><br>  
 this is what we need to change and we get a flag :)<br>  
 ---
-<img width="369" height="156" alt="obraz" src="https://github.com/user-attachments/assets/bf63931b-816a-449a-8893-227131d8a9a5" /><br>  
+<img width="356" height="152" alt="obraz" src="https://github.com/user-attachments/assets/acc8a2bd-1553-4440-86d2-34faae1d696b" /><br>  
 
 
 
