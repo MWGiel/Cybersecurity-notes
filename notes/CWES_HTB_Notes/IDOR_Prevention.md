@@ -8,7 +8,7 @@ User roles and permissions are a vital part of any access control system, which 
 Once an RBAC has been implemented, each user would be assigned a role that has certain privileges. Upon every request the user makes, their roles and privileges would be tested to see if they have access to the object they are requesting. They would only be allowed to access it if they have the right to do so.
 
 There are many ways to implement an RBAC system and map it to the web application's objects and resources, and designing it in the core of the web application's structure is an art to perfect. The following is a sample code of how a web application may compare user roles to objects to allow or deny access control:
--    ```bash
+- ```bash
     match /api/profile/{userId} {
     allow read, write: if user.isAuth == true
     && (user.uid == userId || user.roles == 'admin');
@@ -23,7 +23,7 @@ There's a lot more to access control systems and RBACs, as they can be some of t
 While the core issue with IDOR lies in broken access control (Insecure), having access to direct references to objects (Direct Object Referencing) makes it possible to enumerate and exploit these access control vulnerabilities. We may still use direct references, but only if we have a solid access control system implemented.
 
 Even after building a solid access control system, we should never use object references in clear text or simple patterns (e.g. uid=1). We should always use strong and unique references, like salted hashes or UUID's. For example, we can use UUID V4 to generate a strongly randomized id for any element, which looks something like (89c9b29b-d19f-4515-b2dd-abb6e693eb20). Then, we can map this UUID to the object it is referencing in the back-end database, and whenever this UUID is called, the back-end database would know which object to return. The following example PHP code shows us how this may work:
--    ```bash
+- ```bash
     $uid = intval($_REQUEST['uid']);
     $query = "SELECT url FROM documents where uid=" . $uid;
     $result = mysqli_query($conn, $query);
