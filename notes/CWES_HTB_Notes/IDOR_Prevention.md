@@ -12,8 +12,7 @@ There are many ways to implement an RBAC system and map it to the web applicatio
     match /api/profile/{userId} {
     allow read, write: if user.isAuth == true
     && (user.uid == userId || user.roles == 'admin');
-}
- ```
+```
 The above example uses the user token, which can be mapped from the HTTP request made to the RBAC to retrieve the user's various roles and privileges. Then, it only allows read/write access if the user's uid in the RBAC system matches the uid in the API endpoint they are requesting. Furthermore, if a user has admin as their role in the back-end RBAC, they are allowed read/write access.
 
 In our previous attacks, we saw examples of the user role being stored in the user's details or in their cookie, both of which are under the user's control and can be manipulated to escalate their access privileges. The above example demonstrates a safer approach to mapping user roles, as the user privileges were not passed through the HTTP request, but were mapped directly from the RBAC on the backend using the user's logged-in session token as an authentication mechanism.
