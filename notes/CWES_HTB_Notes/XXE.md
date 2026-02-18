@@ -3,3 +3,11 @@ XML External Entity (XXE) Injection vulnerabilities occur when XML data is taken
 Extensible Markup Language (XML) is a common markup language (similar to HTML and SGML) designed for flexible transfer and storage of data and documents in various types of applications. XML is not focused on displaying data but mostly on storing documents' data and representing data structures. XML documents are formed of element trees, where each element is essentially denoted by a tag, and the first element is called the root element, while other elements are child elements.
 ## XML DTD
 XML Document Type Definition (DTD) allows the validation of an XML document against a pre-defined document structure. The pre-defined document structure can be defined in the document itself or in an external file.
+## Using Safe XML Configurations
+Other than using the latest XML libraries, certain XML configurations for web applications can help reduce the possibility of XXE exploitation. These include:
+- Disable referencing custom Document Type Definitions (DTDs)
+- Disable referencing External XML Entities
+- Disable Parameter Entity processing
+- Disable support for XInclude
+- Prevent Entity Reference Loops
+
