@@ -63,3 +63,12 @@ The result contains the title of all posts as well as the queried data of the co
   }
 }
 ````
+command to display the "id" and "secret" of "SecretObject":
+````bash
+{
+  secrets {
+    id
+    secret
+  }
+}
+````
