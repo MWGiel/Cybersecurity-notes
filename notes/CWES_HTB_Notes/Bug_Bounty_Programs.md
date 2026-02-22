@@ -28,3 +28,4 @@ Most of the time, bug bounty hunters receive invitations to private bug bounty p
 - Proof of Concept (POC) 	Steps to reproduce exploiting the identified vulnerability clearly and concisely.
 - Impact 	Elaborate more on what an attacker can achieve by fully exploiting the vulnerability. Business impact and maximum damage should be included in the impact statement.
 - Remediation 	Optional in bug bounty programs, but good to have.
+- 
