@@ -14,3 +14,10 @@ Web APIs allow users to request data or records by sending various parameters, i
 A web API endpoint is vulnerable to Broken Object Level Authorization (BOLA), also known as Insecure Direct Object Reference (IDOR), if its authorization checks (implemented at the source-code level) fail to correctly ensure that an authenticated user has sufficient permissions or privileges to request and view specific data or perform certain operations.
 ## LAB:  Exploit another Broken Authentication vulnerability to gain unauthorized access to the customer with the email 'MasonJenkins@ymail.com'. Retrieve their payment options data and submit the flag.
 FLAG: HTB{115a6329120e-----c4ec6a63343ed1}
+
+## Broken Object Property Level Authorization
+Broken Object Property Level Authorization is a category of vulnerabilities that encompasses two subclasses: Excessive Data Exposure and Mass Assignment.
+
+An API endpoint is vulnerable to Excessive Data Exposure if it reveals sensitive data to authorized users that they are not supposed to access.
+
+On the other hand, an API endpoint is vulnerable to Mass Assignment if it permits authorized users to manipulate sensitive object properties beyond their authorized scope, including modifying, adding, or deleting values.
