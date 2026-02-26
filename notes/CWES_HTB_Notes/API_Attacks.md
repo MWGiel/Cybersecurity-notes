@@ -17,9 +17,7 @@ FLAG: HTB{115a6329120e-----c4ec6a63343ed1}
 
 ## Broken Object Property Level Authorization
 Broken Object Property Level Authorization is a category of vulnerabilities that encompasses two subclasses: Excessive Data Exposure and Mass Assignment.
-
 An API endpoint is vulnerable to Excessive Data Exposure if it reveals sensitive data to authorized users that they are not supposed to access.
-
 On the other hand, an API endpoint is vulnerable to Mass Assignment if it permits authorized users to manipulate sensitive object properties beyond their authorized scope, including modifying, adding, or deleting values.
 
 ## Vulnerability Note: Unrestricted Resource Consumption (OTP Spam)
