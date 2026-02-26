@@ -21,3 +21,21 @@ Broken Object Property Level Authorization is a category of vulnerabilities that
 An API endpoint is vulnerable to Excessive Data Exposure if it reveals sensitive data to authorized users that they are not supposed to access.
 
 On the other hand, an API endpoint is vulnerable to Mass Assignment if it permits authorized users to manipulate sensitive object properties beyond their authorized scope, including modifying, adding, or deleting values.
+
+## Vulnerability Note: Unrestricted Resource Consumption (OTP Spam)
+
+Date: 2026-02-26
+Target: OTP SMS Endpoint
+
+Summary:
+The application endpoint responsible for sending OTP codes lacks rate limiting and anti-automation controls. This allows an attacker to spam the "Send OTP" button with repeated requests.
+
+Impact:
+
+- Service Disruption: SMS queue gets flooded, blocking legitimate users from receiving codes.
+
+- Financial Cost: Each request triggers a paid SMS, potentially causing financial damage.
+
+Fix:
+Implement rate limiting (e.g., max 3 requests per minute) and CAPTCHA on the OTP request form.
+
