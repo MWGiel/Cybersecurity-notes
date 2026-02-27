@@ -40,3 +40,8 @@ Implement rate limiting (e.g., max 3 requests per minute) and CAPTCHA on the OTP
 ## Server Side Request Forgery
 A web API is vulnerable to Server-Side Request Forgery (SSRF) (also known as Cross-Site Port Attack (XPSA)) if it uses user-controlled input to fetch remote or local resources without validation. SSRF flaws occur when an API fetches a remote resource without validating the user-supplied URL. This allows an attacker to coerce the application to send a crafted request to an unexpected destination (especially local ones), bypassing firewalls or VPNs.
 
+# Prevention 
+To mitigate the SSRF vulnerability, the /api/v1/supplier-companies/certificates-of-incorporation POST and /api/v1/supplier-companies PATCH endpoints must strictly prohibit file URIs that point to local resources on the server other than the intended ones. Implementing validation checks to ensure that file URIs only point to permissible local resources is crucial, which in this case is within the wwwroot/SupplierCompaniesCertificatesOfIncorporations/ folder.
+
+Furthermore, the /api/v1/supplier-companies/{ID}/certificates-of-incorporation GET endpoint must be configured to serve content exclusively from the designated folder wwwroot/SupplierCompaniesCertificatesOfIncorporations. This ensures that only certificates of incorporation are accessible and that local resources or files outside this directory are never exposed. Additionally, this acts as a safeguard, if in case the validations performed by the /api/v1/supplier-companies/certificates-of-incorporation POST and /api/v1/supplier-companies PATCH endpoints fail.
+
