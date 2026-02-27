@@ -37,3 +37,6 @@ Impact:
 Fix:
 Implement rate limiting (e.g., max 3 requests per minute) and CAPTCHA on the OTP request form.
 
+## Server Side Request Forgery
+A web API is vulnerable to Server-Side Request Forgery (SSRF) (also known as Cross-Site Port Attack (XPSA)) if it uses user-controlled input to fetch remote or local resources without validation. SSRF flaws occur when an API fetches a remote resource without validating the user-supplied URL. This allows an attacker to coerce the application to send a crafted request to an unexpected destination (especially local ones), bypassing firewalls or VPNs.
+
