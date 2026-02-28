@@ -45,3 +45,13 @@ To mitigate the SSRF vulnerability, the /api/v1/supplier-companies/certificates-
 
 Furthermore, the /api/v1/supplier-companies/{ID}/certificates-of-incorporation GET endpoint must be configured to serve content exclusively from the designated folder wwwroot/SupplierCompaniesCertificatesOfIncorporations. This ensures that only certificates of incorporation are accessible and that local resources or files outside this directory are never exposed. Additionally, this acts as a safeguard, if in case the validations performed by the /api/v1/supplier-companies/certificates-of-incorporation POST and /api/v1/supplier-companies PATCH endpoints fail.
 
+### Unsafe Consumption of APIs
+APIs frequently interact with other APIs to exchange data, forming a complex ecosystem of interconnected services. While this interconnectivity enhances functionality and efficiency, it also introduces significant security risks if not managed properly. Developers may blindly trust data received from third-party APIs, especially when provided by reputable organizations, leading to relaxed security measures, particularly in input validation and data sanitization.
+
+Several critical vulnerabilities can arise from API-to-API communication:
+- Insecure Data Transmission: APIs communicating over unencrypted channels expose sensitive data to interception, compromising confidentiality and integrity.
+- Inadequate Data Validation: Failing to properly validate and sanitize data received from external APIs before processing or forwarding it to downstream components can lead to injection attacks, data corruption, or even remote code execution.
+- Weak Authentication: Neglecting to implement robust authentication methods when communicating with other APIs can result in unauthorized access to sensitive data or critical functionality.
+- Insufficient Rate-Limiting: An API can overwhelm another API by sending a continuous surge of requests, potentially leading to denial-of-service.
+- Inadequate Monitoring: Insufficient monitoring of API-to-API interactions can make it difficult to detect and respond to security incidents promptly.
+
