@@ -14,3 +14,8 @@ $ ldapsearch -H ldap://ldap.example.com:389 -D "cn=admin,dc=example,dc=com" -w s
 - Use the filter (mail=john.doeexample) to find entries that have this email address.
 ## LDAP Injection
 LDAP injection is an attack that exploits web applications that use LDAP (Lightweight Directory Access Protocol) for authentication or storing user information. The attacker can inject malicious code or characters into LDAP queries to alter the application's behaviour, bypass security measures, and access sensitive data stored in the LDAP directory.
+- LDAP injection attacks are similar to SQL injection attacks but target the LDAP directory service instead of a database.
+# Injection
+As OpenLDAP runs on the server, it is safe to assume that the web application running on port 80 uses LDAP for authentication.
+
+Attempting to log in using a wildcard character (*) in the username and password fields grants access to the system, effectively bypassing any authentication measures that had been implemented. This is a significant security issue as it allows anyone with knowledge of the vulnerability to gain unauthorised access to the system and potentially sensitive data.
