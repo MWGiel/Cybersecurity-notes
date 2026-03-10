@@ -11,4 +11,6 @@ $ ldapsearch -H ldap://ldap.example.com:389 -D "cn=admin,dc=example,dc=com" -w s
 - Connect to the server ldap.example.com on port 389.
 - Bind (authenticate) as cn=admin,dc=example,dc=com with password secret123.
 - Search under the base DN ou=people,dc=example,dc=com.
-- Use the filter (mail=john.doe@example.com) to find entries that have this email address.
+- Use the filter (mail=john.doeexample) to find entries that have this email address.
+## LDAP Injection
+LDAP injection is an attack that exploits web applications that use LDAP (Lightweight Directory Access Protocol) for authentication or storing user information. The attacker can inject malicious code or characters into LDAP queries to alter the application's behaviour, bypass security measures, and access sensitive data stored in the LDAP directory.
