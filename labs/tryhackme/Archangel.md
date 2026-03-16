@@ -1,6 +1,4 @@
-1. Recon
-
-IP: 10.114.156.157
+## Recon
 
 Found domain in HTML source:
 html
