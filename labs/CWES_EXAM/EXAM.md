@@ -1,1 +1,1 @@
-day before preparations: host a vulnrep docker 
+day before preparations: host a vulnrep docker and prepared tools 
