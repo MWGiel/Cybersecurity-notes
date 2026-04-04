@@ -55,3 +55,7 @@ smb: \James.P\> ls
 smb: \James.P\> get flag.txt
 
 ```
+Then the flag was readen:
+```html
+5f61c10dffbc77a704d76016a22f1664
+```
