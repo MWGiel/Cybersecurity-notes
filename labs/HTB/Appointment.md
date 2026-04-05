@@ -18,3 +18,9 @@ PORT   STATE SERVICE VERSION
 443
 #### Task 6: What is a folder called in web-application terminology?
 directory
+#### Task 7: What is the HTTP response code that is returned for Not Found errors?
+404
+#### Task 8: Gobuster is one tool used to brute force directories on a webserver. What switch do we use with Gobuster to specify we're looking to discover directories, and not subdomains?
+dir
+#### Task 9: What single character can be used to comment out the rest of a line in MySQL?
+#
