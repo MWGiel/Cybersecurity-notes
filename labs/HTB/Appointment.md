@@ -24,3 +24,15 @@ directory
 dir
 #### Task 9: What single character can be used to comment out the rest of a line in MySQL?
 #
+#### Task 10: If user input is not handled carefully, it could be interpreted as a comment. Use a comment to login as admin without knowing the password. What is the first word on the webpage returned?
+Payload:
+```html
+admin'-- -:x
+```
+**Congratulations**
+#### Submit Flag
+Your flag is: **e3d0796d002a446c0e622226f42e9672**
+
+
+
+
