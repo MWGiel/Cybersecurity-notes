@@ -1,18 +1,34 @@
-#  Security Researcher | Penetration Tester
+#  Hi, I'm MWG
 
-**Focus:** Web security, vulnerability research, security automation  
-**Currently:** Security tests & documenting learning journey
+ Cybersecurity enthusiast with a focus on web application security.  
+ Constantly learning and improving my skills in offensive security.
 
-## Tech Stack
-- **Testing:** Burp Suite, OWASP ZAP, sqlmap, nmap
-- **Languages:** Python, JavaScript, Bash, SQL
-- **Platforms:** Linux, Docker, Git
+---
 
-##  Recent Projects
-- **CTF Writeups** - Solutions from HTB/TryHackMe challenges  
-- **Tool Development** - Custom security utilities
+## 🛠️ Interests
 
-## Specializations
-- Web Application Security (OWASP Top 10)
-- Vulnerability Discovery & Analysis
-- Security Automation & Tooling
+- Web Application Security
+- Penetration Testing
+- Automation in security
+- Red Teaming
+
+---
+
+##  Certifications
+
+| Certification | Issuer |
+|:--------------|:-------|
+| **CWES (Certified Web Exploitation Specialist)** | Hack The Box |
+
+---
+
+##  Tools & Tech
+
+- Burp Suite
+- Kali Linux
+- Python / Bash
+- Gobuster / FFUF
+- SQLmap
+- Nmap / Netcat
+
+---
