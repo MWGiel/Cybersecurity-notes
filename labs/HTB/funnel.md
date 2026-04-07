@@ -1,0 +1,1 @@
+This machine was based on active machine scanning, local port forwarding and using a postgresql database, I learned the concept of local port forwarding although it is a new concept for me and I need to learn more about it
