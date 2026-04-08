@@ -5,7 +5,7 @@
 
 ---
 
-## 🛠️ Interests
+##  Interests
 
 - Web Application Security
 - Penetration Testing
