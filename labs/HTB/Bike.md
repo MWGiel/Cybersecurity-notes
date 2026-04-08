@@ -72,3 +72,11 @@ after pasting {{7*7}} into the e-mail field, the page returns an error:
 from this error you can read what engine is running on the web application
 Answer: **handlebars**
 
+#### Task 7: What is the name of the BurpSuite tab used to encode text?
+
+Answer: **decoder**
+
+#### Task 8: In order to send special characters in our payload in an HTTP request, we'll encode the payload. What type of encoding do we use?
+
+Answer: **URL**
+
