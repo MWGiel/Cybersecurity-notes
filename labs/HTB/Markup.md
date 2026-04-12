@@ -18,14 +18,52 @@ Answer: **admin:password**
 ```
 Answer: **Order**
 #### Task 4: What XML version is used on the target?
-Answer: **/etc/hosts/**
-#### Task 5: Use a tool to brute force directories on the webserver. What is the full URL to the Magento login page?
+when we send a query using the "Order" tab, we receive a version in response
 ```html
-/admin
+<?xml version = "1.0"?>
 ```
-Answer: **/admin**
-#### Task 6: Look up the password requirements for Magento and also try searching for the most common passwords of 2023. Which password provides access to the admin account?
-After several attempts at common passwords and logging in, this is the password:
-Answer: **qwerty123**
-#### Task 7: Submit root flag
-there was a flag on the dashboard after logging in
+Answer: **1.0**
+#### Task 5: What does the XXE / XEE attack acronym stand for?
+
+Answer: **XML External Entity**
+#### Task 6: What username can we find on the webpage's HTML code?
+```html
+<!-- Modified by Daniel : UI-Fix-9092-->
+```
+Answer: **Daniel**
+#### Task 7: What is the file located in the Log-Management folder on the target?
+after searching user daniel's folder in .ssh/id_rsa I found the ssh key
+Then:
+```html
+ssh -i /tmp/daniel_id_rsa daniel@<target_ip>
+```
+```html
+Directory of C:\
+
+03/12/2020  03:56 AM    <DIR>          Log-Management
+```
+Listing:
+```html
+cd Log-Management
+dir
+```
+Output:
+```html
+03/06/2020  02:42 AM               346 job.bat
+```
+Answer:**job.bat**
+
+#### Task 8: What executable is mentioned in the file mentioned before?
+```html
+daniel@MARKUP C:\Log-Management>more job.bat
+@echo off
+FOR /F "tokens=1,2*" %%V IN ('bcdedit') DO SET adminTest=%%V
+IF (%adminTest%)==(Access) goto noAdmin
+for /F "tokens=*" %%G in ('wevtutil.exe el') DO (call :do_clear "%%G")
+echo.
+echo Event Logs have been cleared!
+goto theEnd
+:do_clear
+wevtutil.exe
+```
+Answer: **wevtutil.exe**
