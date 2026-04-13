@@ -27,17 +27,17 @@
 
 ## Quick Examples
 ```bash
-# Version scan on a host
-nmap -sV 192.168.1.1
+# Version scan on a host 
+nmap -sV <IP>
 
 # Scan all TCP ports
-nmap -p- -T4 192.168.1.0/24
+nmap -p- -T4 <IP>
 
 # Ping scan for live hosts
-nmap -sn 192.168.1.0/24
+nmap -sn <IP>
 
 # Scan with vulnerability scripts
-nmap -sV --script vuln 10.10.10.10
+nmap -sV --script vuln <IP>
 
 ONLY SCAN NETWORKS YOU OWN OR YOU HAVE PERMISSION TO TEST
 
