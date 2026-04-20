@@ -1,6 +1,6 @@
 #  Hi, I'm MWG
 
- Cybersecurity enthusiast with a focus on web application security.  
+ I'm focusing on web application security.  
  Constantly learning and improving my skills in offensive security.
 
 ---
