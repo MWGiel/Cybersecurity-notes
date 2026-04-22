@@ -30,11 +30,24 @@ local: backup.zip remote: backup.zip
 zip2john backup.zip > hash.txt
 ```
 ```html
-smbclient -L 10.129.60.214 -N
+john hash.txt --wordlist=/usr/share/wordlists/rockyou.txt
 ```
+OUTPUT:
 ```html
-smbclient -L 10.129.60.214 -N
+Using default input encoding: UTF-8
+Loaded 1 password hash (PKZIP [32/64])
+Will run 4 OpenMP threads
+Press 'q' or Ctrl-C to abort, almost any other key for status
+741852963        (backup.zip)     
+
 ```
+after opening the file we can see:
+<img width="1036" height="27" alt="obraz" src="https://github.com/user-attachments/assets/6d2e472e-95be-4e22-8ac1-6de56f20eb38" />
+after out decrypt we get: 
+2cb42f8734ea607eefed3b70af13bbd3 : qwerty789
+
+Answer: **qwerty789**
+
 **4**
 #### Task 6: What is the name of the share we are able to access in the end with a blank password?
 **WorkShares**
