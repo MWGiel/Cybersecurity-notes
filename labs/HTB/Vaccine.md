@@ -58,7 +58,9 @@ postgres@vaccine:/var/lib/postgresql$ cat user.txt
 \cat user.txt
 ec9b13ca4d622----------980965bf7
 ```
-<img width="669" height="75" alt="obraz" src="https://github.com/user-attachments/assets/74999a44-6c57-4994-9755-fc5fac40134c" />
+
+<img width="627" height="77" alt="obraz" src="https://github.com/user-attachments/assets/62cdc5ff-de9e-4d9e-a6d9-c141dc24038f" />
+
 
 #### Task 9:
 Using vi as root we can type coomand
@@ -70,7 +72,7 @@ And then the flag was readen:
 cat /root/root.txt
 dd6e058e81----------bbdef2715849
 ```
-<img width="627" height="77" alt="obraz" src="https://github.com/user-attachments/assets/62cdc5ff-de9e-4d9e-a6d9-c141dc24038f" />
+<img width="669" height="75" alt="obraz" src="https://github.com/user-attachments/assets/74999a44-6c57-4994-9755-fc5fac40134c" />
 
 ## Congratulations!!!!
 
