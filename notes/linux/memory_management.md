@@ -35,8 +35,9 @@ cat /proc/buddyinfo # fragmentation info
 ```
 
 ## Commands
-
+```bash
 free -h             # RAM usage
 vmstat 1            # memory + system activity
 top/htop            # per-process memory (RES, VIRT, SHR)
 smem -p             # proportional memory usage
+```
