@@ -32,6 +32,7 @@
 cat /proc/meminfo   # memory stats
 cat /proc/swaps     # swap usage
 cat /proc/buddyinfo # fragmentation info
+```
 
 ## Commands
 
