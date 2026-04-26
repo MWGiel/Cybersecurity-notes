@@ -32,3 +32,10 @@
 cat /proc/meminfo   # memory stats
 cat /proc/swaps     # swap usage
 cat /proc/buddyinfo # fragmentation info
+
+## Commands
+
+free -h             # RAM usage
+vmstat 1            # memory + system activity
+top/htop            # per-process memory (RES, VIRT, SHR)
+smem -p             # proportional memory usage
