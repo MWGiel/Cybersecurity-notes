@@ -33,7 +33,7 @@ contract CoinFlip {
     }
 }
 ```
-Vulnerability: the contract relies on blockhash(block.number - 1) to generate randomness, which is completely predictable and manipulable on-chain. An attacker can simply compute the exact same value in a separate contract and always submit the correct guess.
+**Vulnerability:** the contract relies on blockhash(block.number - 1) to generate randomness, which is completely predictable and manipulable on-chain. An attacker can simply compute the exact same value in a separate contract and always submit the correct guess.
 
 The core vulnerability lies within the flip() function's random number generation:
 ```solidity
