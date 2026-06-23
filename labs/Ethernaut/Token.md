@@ -24,7 +24,7 @@ contract Token {
 }
 ```
 **Vulnerability:**
-the contract is vulnerable to an integer underflow due to the lack of safe math checks in Solidity versions prior to 0.8.0. An attacker can pass a transfer amount greater than their actual balance, causing the balance calculation to wrap around to an extremely large number.The core vulnerability lies within the transfer() function's validation and subtraction logic:
+the contract is vulnerable to an integer underflow due to the lack of safe math checks in Solidity versions prior to 0.8.0. An attacker can pass a transfer amount greater than their actual balance, causing the balance calculation to wrap around to an extremely large number. The core vulnerability lies within the transfer() function's validation and subtraction logic:
 ```solidity
 (balances[msg.sender] - _value >= 0);
 ```
