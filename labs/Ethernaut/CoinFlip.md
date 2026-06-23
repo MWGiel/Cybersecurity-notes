@@ -68,4 +68,4 @@ contract CoinFlipExploit {
     }
 }
 ```
-2. Call the attack function repeatedly (10 times) to win the required consecutive flips:
+2. Call the attack function repeatedly (10 times) to win the required consecutive flips
