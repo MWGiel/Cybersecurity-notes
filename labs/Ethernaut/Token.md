@@ -27,8 +27,8 @@ contract Token {
 the contract is vulnerable to an integer underflow due to the lack of safe math checks in Solidity versions prior to 0.8.0. An attacker can pass a transfer amount greater than their actual balance, causing the balance calculation to wrap around to an extremely large number. The core vulnerability lies within the transfer() function's validation and subtraction logic:
 ```solidity
 (balances[msg.sender] - _value >= 0);
-```
 balances[msg.sender] -= _value;
+```
 Since balances stores uint256 (unsigned integers), the result of the subtraction can never be negative. If _value is greater than balances[msg.sender], an underflow occurs, creating a massive positive number that bypasses the require check and inflates the attacker's balance.Exploit Steps
 1. Determine your current token balance (the challenge provides you with exactly 20 tokens).
 2. Call the transfer function from your player account via the Ethernaut console, sending more tokens than you currently own (e.g., 21 tokens) to any other valid Ethereum address:
