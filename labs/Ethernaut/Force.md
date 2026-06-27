@@ -17,7 +17,7 @@ the remaining Ether of the destroying
 contract is forcefully transferred to the target_address, regardless of whether the target contract wants it or has code to accept it.The core vulnerability lies within the total reliance on the contract's empty state as a security mechanism.
 Because the contract cannot programmatically block a selfdestruct state update, an attacker can manipulate address(this).balance from the outside.
 
-#### Exploit Steps
+## Exploit Steps
 
 1. Deploy an Attacker Contract: Write and deploy a helper smart contract containing a payable function (or constructor) and the selfdestruct instruction.
 ```solidity
@@ -39,7 +39,7 @@ contract Forceattacker {
 3. Execute the Attack: Call the attack function, passing your specific Ethernaut Instance address as the target parameter.
 4. Verify the Balance: Confirm the attack was successful by checking the instance balance via the Ethernaut browser console. It will now show a value greater than zero, allowing you to complete the level.
 
-#### Alternative Balance Manipulation Vectors:
+## Alternative Balance Manipulation Vectors:
 Beyond the selfdestruct opcode, there are three other protocol-level methods where an attacker or the network can alter a contract's balance without triggering its receive() or fallback() functions:
 1. Pre-funding (Predetermined Addresses):Contract addresses are deterministic, calculated from the deployer's address and account nonce. An attacker can pre-calculate the address of a contract before it is deployed and send Ether to it. When the contract eventually goes live, it will start its lifecycle with a balance already greater than zero.
 2. Block Rewards (Coinbase Address):A validator can configure the target contract's address as the coinbase recipient for block production rewards. When a block is successfully minted, the network native rewards are credited directly to the contract's balance via an automated state update.
