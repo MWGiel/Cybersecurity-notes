@@ -1,4 +1,6 @@
-contract code:solidity// SPDX-License-Identifier: MIT
+contract code:
+```solidity
+solidity// SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
 
 contract Vault {
@@ -16,6 +18,7 @@ contract Vault {
         }
     }
 }
+```
 **Vulnerability:** The contract is vulnerable to information disclosure due to a misconception about data privacy on the blockchain. In Solidity, marking a state variable as private only restricts other smart contracts from reading or modifying it programmatically.
 However, the Ethereum blockchain is entirely public, meaning all compiled bytecode and state variable storage can be inspected by anyone off-chain.
 State variables are sequentially mapped into 32-byte storage areas called slots. An attacker can leverage low-level JSON-RPC methods to look up the exact physical memory slot where the password is kept, rendering the private access modifier useless for keeping secrets.
