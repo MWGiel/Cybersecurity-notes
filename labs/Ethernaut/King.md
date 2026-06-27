@@ -56,6 +56,7 @@ contract KingBlocker {
     }
 }
 ```
+
 2. Fund and Claim the Throne: Call the attack function on your deployed contract, passing the King instance address and providing enough value (ether) via the console or your deployment tool to meet or exceed the current prize.
 3. Induce Permanent Denial of Service: Any subsequent player or the owner attempting to reclaim the throne will trigger the King contract's transfer line, forcing a call to your contract's receive function. The assert(false) will fail, consuming all their transaction gas and reverting their attempt.
 4. Verify the State: Confirm that the throne is unbreachable by attempting a higher bid from a different account. The transaction will consistently fail with an execution reverted status.
