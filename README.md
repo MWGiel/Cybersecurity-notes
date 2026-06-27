@@ -7,6 +7,7 @@
 
 ##  Interests
 
+- Blockchain security
 - Web Application Security
 - Penetration Testing
 - Automation in security
@@ -25,7 +26,6 @@
 ##  Tools & Tech
 
 - Burp Suite
-- Kali Linux
 - Python / Bash
 - Gobuster / FFUF
 - SQLmap
