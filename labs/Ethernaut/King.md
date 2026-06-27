@@ -26,7 +26,7 @@ contract King {
     }
 }
 ```
-**Vulnerability:** The contract is vulnerable to a Denial of Service (DoS) attack through unexpected revert, commonly known as a "King of the Hill" lock. In Solidity, using .transfer() or .send() to forward funds to an address automatically bubbles up any failure or revert from the receiving party.Because the contract sends funds to the current king before updating the state to the new king, a malicious contract can purposefully reject all incoming ether. This halts the execution of the entire function, causing a perpetual revert for any future player and locking the throne permanently.
+**Vulnerability:** The contract is vulnerable to a Denial of Service (DoS) attack through unexpected revert, commonly known as a "King of the Hill" lock. In Solidity, using .transfer() or .send() to forward funds to an address automatically bubbles up any failure or revert from the receiving party. Because the contract sends funds to the current king before updating the state to the new king, a malicious contract can purposefully reject all incoming ether. This halts the execution of the entire function, causing a perpetual revert for any future player and locking the throne permanently.
 
 ## Exploit Steps
 1. Deploy a Malicious Blocker Contract: Deploy a custom smart contract capable of triggering an absolute revert whenever it receives ether:
