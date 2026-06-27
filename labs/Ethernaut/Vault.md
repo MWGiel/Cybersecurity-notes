@@ -25,7 +25,7 @@ State variables are sequentially mapped into 32-byte storage areas called slots.
 
 ## Exploit Steps
 1.Locate the Target Slot: Identify where the password variable is stored. Variables are packed sequentially:
-- Slot 0: bool public lockedSlot 1: bytes32 private password
+- Slot 0: bool public locked
 - Slot 1: bytes32 private password
 2. Read the Private Storage: Open the Ethernaut developer console in your browser and execute the low-level JSON-RPC storage lookup for Slot 1:
 ```javascript
