@@ -1,5 +1,5 @@
 contract code:
-```
+```solidity
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
 
@@ -20,7 +20,7 @@ Because the contract cannot programmatically block a selfdestruct state update, 
 #### Exploit Steps
 
 1. Deploy an Attacker Contract: Write and deploy a helper smart contract containing a payable function (or constructor) and the selfdestruct instruction.
-```
+```solidity
 // SPDX-License-Identifier: MIT
 pragma solidity >=0.6.12 <0.9.0;
 
