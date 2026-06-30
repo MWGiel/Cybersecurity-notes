@@ -21,7 +21,7 @@ contract Elevator {
     }
 }
 ```
-Vulnerability: The contract is vulnerable to state manipulation due to the incorrect assumption that external function calls will return consistent results. In Solidity, 
+**Vulnerability:** The contract is vulnerable to state manipulation due to the incorrect assumption that external function calls will return consistent results. In Solidity, 
 when a contract calls an external function multiple times, it cannot assume the results will be the same for identical inputs. The Elevator contract calls building.isLastFloor() twice, once in the conditional check and once to set the top variable without caching the result. A malicious contract can implement isLastFloor() with internal state that changes between calls,
 returning false the first time to pass the condition and true the second time to set top to true. This allows the attacker to manipulate the contract's state and bypass the intended logic.
 
