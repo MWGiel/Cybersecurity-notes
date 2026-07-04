@@ -34,12 +34,9 @@ Once `data[2]` is read from slot 5, the `unlock` function expects a `bytes16`, w
 ## Exploit Steps
 1. Read storage slot 5 of the deployed instance directly from the chain:
 ```js
-const slot5 = await web3.eth.getStorageAt(contractAddress, 5);
+await web3.eth.getStorageAt(instance, 5)
 ```
-2. Truncate the value to its first 16 bytes (32 hex characters after `0x`) to obtain the `bytes16` key expected by `unlock`:
-```js
-const key = slot5.slice(0, 34); // "0x" + 32 hex chars
-```
+2. Truncate the value to its first 16 bytes (32 hex characters after `0x`) to obtain the `bytes16` key expected by `unlock`
 3. Call the `unlock` function passing the derived key:
 ```js
 await contract.unlock(key);
