@@ -23,17 +23,17 @@ Using the kubelet’s WebSocket exec interface, the attacker executes commands i
 
 ### Key Vulnerabilities & Techniques:
 
-- CVE-2026-33017 – Unauthenticated RCE via Langflow component injection.
+- CVE-2026-33017, Unauthenticated RCE via Langflow component injection.
 
-- Credential Reuse – Password from .env file reused for SSH login.
+- Credential Reuse, Password from .env file reused for SSH login.
 
-- JWT “none” Algorithm – Forging unsigned admin tokens.
+- JWT “none” Algorithm, Forging unsigned admin tokens.
 
-- Dynamic MCP Tool Registration – Arbitrary code execution through a malicious tool.
+- Dynamic MCP Tool Registration, Arbitrary code execution through a malicious tool.
 
-- Kubernetes RBAC Misconfiguration – nodes/proxy permission grants access to the kubelet.
+- Kubernetes RBAC Misconfiguration, nodes/proxy permission grants access to the kubelet.
 
-- Privileged Pod with HostPath Mount – Container escapes to the host filesystem.
+- Privileged Pod with HostPath Mount, Container escapes to the host filesystem.
 
 This chain moves from an external web application vulnerability to full node compromise in a Kubernetes environment.
 
