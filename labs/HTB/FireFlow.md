@@ -1,5 +1,6 @@
 ## FireFlow machine writeup
 <img width="877" height="540" alt="image" src="https://github.com/user-attachments/assets/9b4078f0-9e4a-4185-8122-2dc4d2c0c0b3" />
+
 ### 1. Reconnaissance
 
 The target exposes three services: SSH on port 22, and Nginx on ports 80 and 443. The HTTPS site redirects to fireflow.htb, and further inspection reveals a virtual host flow.fireflow.htb hosting a Langflow instance. A playground page with an exposed flow_id indicates an unauthenticated endpoint that could be exploited.
