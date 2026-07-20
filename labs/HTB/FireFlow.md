@@ -19,7 +19,7 @@ Using this admin token, the attacker registers a new “tool” on the MCP serve
 
 Inside the pod, standard Kubernetes service account credentials are available. The associated service account mcp-sa is granted the permission to get resources of type nodes/proxy. This powerful permission allows the API server to proxy requests directly to the kubelet.
 The attacker enumerates pods through the kubelet directly on port 10250 and discovers a privileged pod named prometheus-prometheus-node-exporter-nmntq in the monitoring namespace. Its node-exporter container runs with elevated privileges and has the entire host filesystem mounted at /proc, /sys, and / (the root filesystem).
-Using the kubelet’s WebSocket exec interface, the attacker executes commands inside that privileged container. Because the host root filesystem is mounted directly, the attacker can read the root flag from /root/root.txt, effectively achieving full compromise of the underlying node.
+Using the kubelet’s WebSocket exec interface, the attacker executes commands inside that privileged container. Because the host root filesystem is mounted directly, the attacker can read the root flag, effectively achieving full compromise of the underlying node.
 
 ### Key Vulnerabilities & Techniques:
 
