@@ -1,4 +1,5 @@
-## TCP (Transmission Control Protocol) and UDP (User Datagram Protocol) are fundamental Transport Layer protocols in both OSI and TCP/IP models. They both handle application-to-application data transfer, yet they operate very differently when it comes to dependability, performance, and typical applications. Knowing how they differ is crucial for building fast and stable network systems.
+## TCP (Transmission Control Protocol) and UDP (User Datagram Protocol)
+are fundamental Transport Layer protocols in both OSI and TCP/IP models. They both handle application-to-application data transfer, yet they operate very differently when it comes to dependability, performance, and typical applications. Knowing how they differ is crucial for building fast and stable network systems.
 
 ### Transmission Control Protocol (TCP)
 TCP is a dependable, connection-focused transport method that guarantees data arrives correctly and in sequence. It uses various checks and balances to ensure data integrity, which adds overhead but provides trustworthiness.
