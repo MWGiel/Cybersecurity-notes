@@ -1,4 +1,4 @@
-# HackTheBox — Devel Writeup
+# HackTheBox - Devel Writeup
 
 **Difficulty:** Easy
 **OS:** Windows
@@ -32,7 +32,7 @@ nmap -sV -sC -p- 10.129.x.x
 | 21   | ftp     | Microsoft ftpd         |
 | 80   | http    | Microsoft IIS httpd 7.5 |
 
-Two open ports, both Microsoft services — strongly suggests a Windows box
+Two open ports, both Microsoft services - strongly suggests a Windows box
 with a default IIS install and an FTP service that may allow anonymous
 access.
 
@@ -40,7 +40,7 @@ access.
 
 ## Enumeration
 
-### FTP — Anonymous Login
+### FTP - Anonymous Login
 
 ```bash
 ftp 10.129.x.x
@@ -64,14 +64,14 @@ The files `iisstart.htm` and `welcome.png` are the **default IIS landing
 page assets**. This is a strong indicator that the FTP root directory is the
 same as the IIS webroot (`C:\inetpub\wwwroot`).
 
-### HTTP — Confirming the Webroot
+### HTTP - Confirming the Webroot
 
 Browsing to `http://10.129.x.x/` shows the default IIS 7 welcome page,
 confirming the same files seen over FTP are being served on port 80.
 
 ---
 
-## Exploitation — Initial Foothold
+## Exploitation - Initial Foothold
 
 Since the FTP root and web root are shared, and anonymous FTP allows
 **write** access, an ASP.NET webshell/payload can be uploaded via FTP and
@@ -163,11 +163,11 @@ several modules, including:
 
 ### Exploiting the Suggestions
 
-**First attempt — `bypassuac_eventvwr` fails**, because the `IIS APPPOOL\Web`
-user is not a member of the local Administrators group (expected — it's a
+**First attempt - `bypassuac_eventvwr` fails**, because the `IIS APPPOOL\Web`
+user is not a member of the local Administrators group (expected - it's a
 UAC bypass, not a privilege escalation on its own).
 
-**Second attempt — `ms10_015_kitrap0d` succeeds:**
+**Second attempt - `ms10_015_kitrap0d` succeeds:**
 
 ```
 use exploit/windows/local/ms10_015_kitrap0d
@@ -206,7 +206,7 @@ meterpreter > cat c:\Users\babis\Desktop\user.txt.txt
 meterpreter > cat c:\Users\Administrator\Desktop\root.txt.txt
 ```
 
-> Note the double `.txt.txt` extension — this is how the flag files are
+> Note the double `.txt.txt` extension - this is how the flag files are
 > actually named on the box (a quirk of the machine author), not a typo in
 > this writeup.
 
@@ -220,9 +220,9 @@ meterpreter > cat c:\Users\Administrator\Desktop\root.txt.txt
    execution.
 2. **Old, unpatched Windows kernels have many known local exploits.**
    `local_exploit_suggester` is a good starting point and is fairly reliable
-   on x86 targets (less so on x64). Not every suggested module will work —
+   on x86 targets (less so on x64). Not every suggested module will work -
    `bypassuac_eventvwr` failed here because the initial user wasn't a local
-   admin — so be ready to try several candidates.
+   admin - so be ready to try several candidates.
 3. **Watch your working directory.** Many Metasploit local exploits need to
    write a file to disk on the target. If the current directory isn't
    writable by the session's user (as with IIS's default app pool
