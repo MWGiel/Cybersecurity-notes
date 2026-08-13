@@ -46,12 +46,7 @@ wpscan --url http://blocky.htb --enumerate
 
 **Key Findings:**
 
-- WordPress 4.8 (outdated)
-- Theme: twentyseventeen 1.3
-- 
 User identified: **notch**
-- XML-RPC enabled
-- Upload directory has listing enabled
 
 ### Directory Brute-forcing (Gobuster)
 
