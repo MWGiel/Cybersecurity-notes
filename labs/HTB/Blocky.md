@@ -19,11 +19,13 @@ nmap -sC -sv -oA blocky X.X.X.X
 
 **Results:**
 ```
-PORT      STATE  SERVICE VERSION
-21/tcp    open   ftp     ProFTPD 1.3.5a
-22/tcp    open   ssh     OpenSSH 7.2p2 Ubuntu 4ubuntu2.2
-80/tcp    open   http    Apache httpd 2.4.18
-25565/tcp open   minecraft Minecraft 1.11.2
+PORT     STATE  SERVICE VERSION
+21/tcp   open   ftp?
+22/tcp   open   ssh     OpenSSH 7.2p2 Ubuntu 4ubuntu2.2 (Ubuntu Linux; protocol 2.0)
+80/tcp   open   http    Apache httpd 2.4.18
+8192/tcp closed sophos
+Service Info: Host: 127.0.1.1; OS: Linux; CPE: cpe:/o:linux:linux_kernel
+
 ```
 
 ### Add Hosts Entry
