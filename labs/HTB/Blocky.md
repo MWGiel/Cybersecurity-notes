@@ -104,12 +104,14 @@ strings BlockyCore.class
 **Key finding - MySQL credentials:**
 
 ```java
-String url = "jdbc:mysql://localhost:3306/blocky?user=root&password=PASSWORD_REDACTED";
+public String sqlHost = "localhost";
+public String sqlUser = "root";
+public String sqlPass = "8YsqfCTnvxAUeduzjNSXe22";
 ```
 
 **Credentials found:**
 - **Database user:** root
-- **Database password:** PASSWORD_REDACTED
+- **Database password:** 8YsqfCTnvxAUeduzjNSXe22
 
 ---
 
