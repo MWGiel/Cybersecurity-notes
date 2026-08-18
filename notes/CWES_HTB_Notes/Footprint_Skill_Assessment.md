@@ -171,10 +171,6 @@ ceil@NIXEASY:~$/pre>
 
 Successfully logged into the system as user `ceil`.
 
----
-
-## Post-Exploitation
-
 ### Enumeration of the System
 
 ```bash
@@ -185,7 +181,7 @@ whoami
 # Check groups
 id
 # uid=1001(ceil) gid=1001(ceil) groups=1001(ceil)
-
+```
 ### System Overview
 
 The home directory was empty:
