@@ -91,9 +91,11 @@ ssh  ceil@X.X.X.X
 ```
 
 **Result:**
+```
 Welcome to Ubuntu 20.04.1 LTS (Linux 5.4.0-90-generic x86_64)
 Last login: Wed Nov 10 05:48:02 2021 from 10.10.14.20
 ceil@NIXEASY:~$/pre>
+```
 
 Successfully logged into the system as user `ceil`.
 
