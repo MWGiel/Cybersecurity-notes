@@ -81,7 +81,7 @@ Select * from users;
 
 The "users" database contained a table with multiple entries, including the target user":
 
-````ruby
+```
 id | username | password
 -----+------------------+----------------------------------
 150 | HTB       | cr3n4o7rzse7rzhnkchssncif7ds
