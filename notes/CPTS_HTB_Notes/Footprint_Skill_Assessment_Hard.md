@@ -15,10 +15,10 @@ Nmap 7.95 scan result:
 
 #### SNMP Enumeration
 
-A scan of the SNMP service using the default community string "public" yielded significant information including:
+A scan of the SNMP service using the default community string "backup" yielded significant information including:
 
 ```bash
-snmpwalk -v1 -c public 10.129.202.20
+snmpwalk -v1 -c backup 10.129.202.20
 ```
 
 Important discoveries included:
@@ -88,39 +88,6 @@ id | username | password
 ```
 
 ---
-
-#### Final Credentials
-
-The compromised credentials for the target user were:
-
-```a
-Username: HTB
-
-Password: cr3n4o7rzse7rzhnkchssncif7ds
-A``
-
-[Continue]
-
-
----
-
-#### Timeline of Attack
-
-1. SNMP enumeration identified open port & credentials
-2. POP3 access retrieved private SSH key
-3. SSH login as "tom"
-4. MySQL access using found password
-5. User "HTB" identified in database
-
----
-
-#### Indicators and Flags (CTF style)
-
-- Flag1: HTB{captured_the_credentials}
-- Flag2: HTB{mysql_database_access}
-
----
-
 #### Lessons Learned
 
 - SNMP is often overlooked but can contain sensitive information
