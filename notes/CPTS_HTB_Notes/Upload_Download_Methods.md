@@ -45,7 +45,7 @@ perl -e 'use LWP::Simple; getstore("URL", "plik");'
 ```
 
 
-## 🤱 JavaScript (Windows)
+##  JavaScript (Windows)
 
 ### File `wget.js`:
 
@@ -67,7 +67,7 @@ cscript.exe /nologo wget.js URL plik
 ```
 
 
-## 🤱 VBScript (Windows)
+##  VBScript (Windows)
 
 ### File `wget.vbs`:
 
@@ -91,7 +91,7 @@ cscript.exe /nologo wget.vbs URL plik
 ```
 
 
-## 🐩 Upload with Python3
+##  Upload with Python3
 
 ### Server (Pwnbox):
 
