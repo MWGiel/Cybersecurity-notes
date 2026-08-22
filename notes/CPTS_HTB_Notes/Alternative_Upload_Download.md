@@ -103,4 +103,19 @@ echo "BASE64_TEXT" | base64 -d > file
 
 When mounted through RDP, the path `\tsclient` provides access to local folders from the remote session, making file transfer as easy as drag-and-drop.
 
+### Most popular LOLBins:
+Windows:
+
+    certreq.exe - upload
+
+    bitsadmin - download
+
+    certutil - download
+
+    powershell - download/upload
+
+    wmic - download (stary)
+
+    cscript - download (VBS/JS)
+
 ---
