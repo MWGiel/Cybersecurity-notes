@@ -1,4 +1,4 @@
-# HTB Academy - Attacking Common Services (Hard) - Complete Walkthrough
+# HTB Academy - Attacking Common Services - Complete Walkthrough
 
 ## Overview
 
