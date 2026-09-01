@@ -1,0 +1,8 @@
+└──╼ $rpcclient -U "INLANEFREIGHT.LOCAL\forend%Klmcargo2" 172.16.5.5 -c "enumdomgroups" | grep -i interns
+group:[Interns] rid:[0xff0]
+
+└──╼ $rpcclient -U "INLANEFREIGHT.LOCAL\forend%Klmcargo2" 172.16.5.5 -c "querygroup 0xff0"
+	Group Name:	Interns
+	Description:	
+	Group Attribute:7
+	Num Members:10
