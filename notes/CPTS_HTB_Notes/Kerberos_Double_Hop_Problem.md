@@ -10,10 +10,12 @@ Double Hop Problem - when you connect via WinRM Host A, then try to access Host 
 - Can't authenticate further
 
 ## Check if you have it
+```
 powershell
 klist
-# 1 ticket → PROBLEM
-# Many tickets → OK
+```
+1 ticket → PROBLEM
+Many tickets → OK
 
 ## Fixes
 
