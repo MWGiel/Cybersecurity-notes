@@ -17,7 +17,7 @@ nmap -sC -sV -p- <TARGET_IP>
 ```
 
 **Results:**
-``bash
+```bash
 22/tcp   open  ssh     OpenSSH 9.6p1 Ubuntu 3.13ubuntu3.13.6
 2727/tcp  open  http    nginx 1.24.0 (Ubuntu)
 ```
