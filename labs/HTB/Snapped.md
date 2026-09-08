@@ -13,7 +13,7 @@ Snapped is a Hack The Box machine that requires exploiting a vulnerability in th
 ### Port Scanning
 
 ```bash
-nmap -sC -sV -p- <T001010-00-0001>
+nmap -sC -sV -p- <TARGET_IP>
 ```
 
 **Results:**
