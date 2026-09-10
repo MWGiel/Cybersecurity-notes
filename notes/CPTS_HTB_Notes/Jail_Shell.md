@@ -2,7 +2,7 @@
 | Method | Command | Notes |
 |---------|------------|--------|
 | **Bash/sh** | /bin/sh -i | Runs the shell in interactive mode (`-i`). |
-| **Python** | `python -c 'import pty; pty.spawn("/bin/sh")'` | Most common method (if Python is available). |
+| **Python** | `python3 -c 'import pty; pty.spawn("/bin/sh")'` | Most common method (if Python is available). |
 | **Perl** | `perl -e 'exec "/bin/sh";'` | Works if Perl is installed on the system. |
 | **Ruby** | `ruby -e 'exec "/bin/sh"'` | Works if Ruby is available. |
 | **Lua** | `lua -e 'os.execute("/bin/sh")'` | Less common, but useful if Lua is present. |
