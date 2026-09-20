@@ -1,4 +1,4 @@
-# Ethernaut — Magic Number Writeup
+# Ethernaut Magic Number Writeup
 
 ## Level Overview
 
@@ -21,6 +21,18 @@ contract MagicNum {
     function setSolver(address _solver) public {
         solver = _solver;
     }
+
+    /*
+    ____________/\\\_______/\\\\\\\\\_____        
+     __________/\\\\\_____/\\\///////\\\___       
+      ________/\\\/\\\____\///______\//\\\__      
+       ______/\\\/\/\\\______________/\\\/___     
+        ____/\\\/__\/\\\___________/\\\//_____    
+         __/\\\\\\\\\\\\\\\\_____/\\\//________   
+          _\///////////\\\//____/\\\/___________  
+           ___________\/\\\_____/\\\\\\\\\\\\\\\_ 
+            ___________\///_____\///////////////__
+    */
 }
 ```
 
@@ -38,7 +50,7 @@ MagicNum(instance).solver().whatIsTheMeaningOfLife()
 
 If that call returns `42`, the level is solved.
 
-The solver contract must **always return 42**, regardless of which function selector was used in the call. We don't even need to check the selector — we can just always return 42.
+The solver contract must **always return 42**, regardless of which function selector was used in the call. We don't even need to check the selector, we can just always return 42.
 
 ### What "10 bytes" actually means
 
@@ -180,12 +192,6 @@ That's **22 bytes** total creation code.
 
 ---
 
-## Alternative: Simpler Creation Code
-
-There's an even shorter (but less elegant) creation code that many writeups use — it stores the runtime code directly via `MSTORE`-like operations. However, the version above is the cleanest and most idiomatic.
-
----
-
 ## Deployment via Console (web3.js)
 
 ```javascript
@@ -283,7 +289,7 @@ Let's trace it:
    - Writes `42` to memory.
    - Returns 32 bytes from memory.
 
-So the caller receives `0x000000000000000000000000000000000000000000000000000000000000002a`, which the ABI decodes as `uint256(42)`. ✅
+So the caller receives `0x000000000000000000000000000000000000000000000000000000000000002a`, which the ABI decodes as `uint256(42)`. 
 
 ---
 
@@ -291,7 +297,7 @@ So the caller receives `0x000000000000000000000000000000000000000000000000000000
 
 ### 1. EVM is a stack machine
 
-Every opcode pops its arguments from the top of the stack. That's why argument order matters — the value that needs to be on top must be pushed **last**.
+Every opcode pops its arguments from the top of the stack. That's why argument order matters,  the value that needs to be on top must be pushed **last**.
 
 ### 2. Memory is a byte array
 
@@ -360,4 +366,4 @@ This exercise is a great introduction to:
 - Why hand-written bytecode matters for extreme gas/size optimization.
 - How Solidity's ABI and selector dispatch is just a convention, not a requirement.
 
-**Level cleared.** 🎉
+**Level cleared.** 
