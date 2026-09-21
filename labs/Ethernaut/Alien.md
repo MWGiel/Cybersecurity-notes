@@ -207,7 +207,7 @@ await contract.revise(i, myBytes32);
 
 // 4. Verify ownership.
 await contract.owner();
-// "0x7Ba1211CD2fcD7527Fc9848F3cDb231c3723e2A9"
+// "Myadress"
 ```
 
 Level completed.
