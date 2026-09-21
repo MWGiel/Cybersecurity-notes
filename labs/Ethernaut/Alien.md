@@ -41,7 +41,7 @@ contract AlienCodex is Ownable {
 
 This challenge exploits two classic Solidity 0.5.x bugs:
 
-1. **Integer underflow** on `codex.length--`5 no SafeMath, no checked arithmetic).
+1. **Integer underflow** on `codex.length--`5 no SafeMath, no checked arithmetic.
 2. **No bounds checking** on dynamic array writes (`codex[i] = ...`), which allows arbitrary storage slot overwrite.
 
 ---
