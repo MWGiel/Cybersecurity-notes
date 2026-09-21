@@ -241,10 +241,10 @@ The `retract()` step is only needed to bypass the implicit length check that Sol
 ## Key Takeaways
 
 1. **Always use SafeMath (or Solidity ≥ 0.8)** to prevent integer underflow/overflow.
-2. **Dynamic array writes must be bounds-checked** — in Solidity 0.5.x they aren't, which allows arbitrary storage overwrite when combined with a corrupted length.
+2. **Dynamic array writes must be bounds-checked**, in Solidity 0.5.x they aren't, which allows arbitrary storage overwrite when combined with a corrupted length.
 3. **Storage layout matters** — small types like `bool` and `address` are packed together. Always verify with `getStorageAt` instead of assuming slot numbers.
-4. **Hash functions are not interchangeable** — `eth_utils.keccak` (Python), `web3.utils.keccak256`, and `web3.utils.soliditySha3` can produce different results in different environments. `soliditySha3` most closely mirrors what Solidity does.
-5. **Compute the exploit index off-chain** — never try to do 256-bit Keccak arithmetic by hand.
+4. **Hash functions are not interchangeable**, `eth_utils.keccak` (Python), `web3.utils.keccak256`, and `web3.utils.soliditySha3` can produce different results in different environments. `soliditySha3` most closely mirrors what Solidity does.
+5. **Compute the exploit index off-chain**, never try to do 256-bit Keccak arithmetic by hand.
 
 ---
 
