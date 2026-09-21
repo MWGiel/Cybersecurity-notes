@@ -142,7 +142,7 @@ i ≡ 2^256 - keccak256(1)
 
 ## Computing the Exploit Index
 
-We need `keccak256(uint256(1))` computed the way Solidity does — hashing the 32-byte big-endian representation of `1`.
+We need `keccak256(uint256(1))` computed the way Solidity does, hashing the 32-byte big-endian representation of `1`.
 
 In JavaScript (web3):
 
@@ -158,7 +158,7 @@ i.toString(16);
 // 0x4ef1d2ad89edf8c4d91132028e8195cdf30bb4b5053d4f8cd260341d4805f30a
 ```
 
-In Python, using `eth_utils.keccak` (which in some environments returns NIST SHA-3 rather than Keccak-256 — use with caution):
+In Python, using `eth_utils.keccak` (which in some environments returns NIST SHA-3 rather than Keccak-256, use with caution):
 
 ```python
 from eth_utils import keccak
@@ -184,7 +184,7 @@ web3.utils.toBN(keccakSlot1).add(web3.utils.toBN(i)).mod(web3.utils.toBN(2).pow(
 
 ---
 
-## The Exploit — Step by Step
+## The Exploit, Step by Step
 
 In the Ethernaut browser console:
 
@@ -214,7 +214,7 @@ Level completed.
 
 ---
 
-## Why It Works — Intuition
+## Why It Works, Intuition
 
 Imagine storage as a huge array of 2^256 numbered boxes.
 
@@ -232,7 +232,7 @@ If we pick `i = 2^256 - keccak256(1)`, then:
 keccak256(1) + i = keccak256(1) + 2^256 - keccak256(1) = 2^256 ≡ 0
 ```
 
-The write lands in **box 0** — exactly where `owner` lives. By writing our address there, we become the owner.
+The write lands in **box 0**, exactly where `owner` lives. By writing our address there, we become the owner.
 
 The `retract()` step is only needed to bypass the implicit length check that Solidity performs on array writes. With `codex.length = 2^256 - 1`, every possible `i` is "in bounds".
 
