@@ -99,7 +99,7 @@ codex[1]  →  keccak256(1) + 1
 codex[i]  →  keccak256(1) + i   (mod 2^256)
 ```
 
-The `revise(i, _content)` function performs `codex[i] = _content`, which writes to `keccak256(1) + i` — **with no bounds check**.
+The `revise(i, _content)` function performs `codex[i] = _content`, which writes to `keccak256(1) + i` **with no bounds check**.
 
 ---
 
