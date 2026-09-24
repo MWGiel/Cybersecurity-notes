@@ -83,7 +83,7 @@ Together, these allow an attacker to drain one side of the pool entirely by perf
 
 The pricing formula is:
 
-``a
+```
 amountOut = (amountIn * balanceTo) / (balanceFrom + amountIn)
 ```
 
