@@ -79,7 +79,7 @@ Together, these allow an attacker to drain one side of the pool entirely by perf
 
 ---
 
-## The Bug, Free Swaps and Skewed Reserves
+## The Bug: Free Swaps and Skewed Reserves
 
 The pricing formula is:
 
