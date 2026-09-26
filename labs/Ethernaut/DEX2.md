@@ -124,22 +124,22 @@ Step	Action	DEX token1	DEX token2	DEX Evil
 
 - Key elements of success:
 
-    Vulnerability in DexTwo: no require checking whether from and to are token1/token2 — any token can be used.
+    - Vulnerability in DexTwo: no require checking whether from and to are token1/token2 — any token can be used.
 
-    Transfer Evil to DEX: the DEX must hold some EvilToken so getSwapAmount doesn't divide by zero.
+    - Transfer Evil to DEX: the DEX must hold some EvilToken so getSwapAmount doesn't divide by zero.
 
-    Allowance: the DEX must have approval to spend EvilToken.
+    - Allowance: the DEX must have approval to spend EvilToken.
 
-    Matching the amount: swapping 100 Evil for 100 token2 (not 200, because the DEX doesn't have 200 token2).
+    - Matching the amount: swapping 100 Evil for 100 token2 (not 200, because the DEX doesn't have 200 token2).
 
-- Lessons learned
+- Lessons learned:
 
-    DexTwo vs Dex: DexTwo has a stricter condition (0 token1 AND 0 token2) and no require on tokens, that's the vulnerability.
+    - DexTwo vs Dex: DexTwo has a stricter condition (0 token1 AND 0 token2) and no require on tokens, that's the vulnerability.
 
-    getSwapAmount: uses balanceOf(address(this)), the DEX must hold the from token to avoid division by zero.
+    - getSwapAmount: uses balanceOf(address(this)), the DEX must hold the from token to avoid division by zero.
 
-    Custom token: a powerful tool in attacks on AMMs, it lets you manipulate the exchange rate.
+    - Custom token: a powerful tool in attacks on AMMs, it lets you manipulate the exchange rate.
 
-    Don't blindly copy walkthroughs: the standard sequence for Dex does not work in DexTwo.
+    - Don't blindly copy walkthroughs: the standard sequence for Dex does not work in DexTwo.
 
 Level completed
