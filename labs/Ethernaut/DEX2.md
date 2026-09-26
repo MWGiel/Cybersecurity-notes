@@ -122,7 +122,7 @@ Step	Action	DEX token1	DEX token2	DEX Evil
 2	Transfer 100 Evil to DEX	0	90	100
 3	Swap 100 Evil for token2	0	0	200
 
-Key elements of success:
+- Key elements of success:
 
     Vulnerability in DexTwo: no require checking whether from and to are token1/token2 — any token can be used.
 
@@ -132,7 +132,7 @@ Key elements of success:
 
     Matching the amount: swapping 100 Evil for 100 token2 (not 200, because the DEX doesn't have 200 token2).
 
-Lessons learned
+- Lessons learned
 
     DexTwo vs Dex: DexTwo has a stricter condition (0 token1 AND 0 token2) and no require on tokens, that's the vulnerability.
 
