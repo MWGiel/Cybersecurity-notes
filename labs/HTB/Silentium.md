@@ -379,25 +379,8 @@ After logging in, generate an API token from:
 
 ---
 
-## 9. RCE via CVE-2025-8110
 
-The installed Gogs version is vulnerable to **CVE-2025-8110**, a path traversal issue involving symlinks in the repository contents API.
-
-### Vulnerability mechanism
-
-The general attack chain is:
-
-1. Create a symlink inside a repository.
-2. Point the symlink at a privileged file on the host.
-3. Use the repository contents API to overwrite the symlink target.
-4. Because Gogs is running as `root`, the target file is written with root privileges.
-5. Modify a file that grants code execution or elevated privileges.
-
-This provides an **arbitrary file write as root**.
-
----
-
-## 10. Root via `/etc/sudoers.d/ben`
+## 9. Root via `/etc/sudoers.d/ben`
 
 One straightforward exploitation path is to overwrite:
 
@@ -427,7 +410,7 @@ The machine is now fully compromised.
 
 ---
 
-## 11. Alternative RCE — `.git/config`
+## 10. Alternative RCE — `.git/config`
 
 A third exploitation path is to abuse Git's `sshCommand` configuration.
 
@@ -479,7 +462,7 @@ Using `ncat` or `socat` can be more reliable for this type of reverse shell.
 
 ---
 
-## 12. Root
+## 11. Root
 
 After exploiting the Gogs arbitrary file write:
 
