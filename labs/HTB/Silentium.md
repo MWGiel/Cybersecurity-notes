@@ -38,7 +38,6 @@ ffuf -w /usr/share/seclists/Discovery/DNS/subdomains-top1million-5000.txt \
 **Discovered:**
 
 - `staging.silentium.htb` — Flowise
-- `staging-v2-code.dev.silentium.htb` — Gogs
 
 Add the Flowise host:
 
@@ -286,7 +285,10 @@ server {
     }
 }
 ```
-
+We need to add doamin to /etc/hosts
+```
+- `staging-v2-code.dev.silentium.htb` — Gogs
+```
 This reveals a Gogs instance listening internally on:
 
 ```text
