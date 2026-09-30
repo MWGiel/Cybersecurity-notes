@@ -458,17 +458,16 @@ In this case, packet capture showed a connection attempt to:
 
 However, the `nc` listener did not successfully handle the connection.
 
-Using `ncat` or `socat` can be more reliable for this type of reverse shell.
+So we used
+```
+rlwrap nc -lvnp 4444
+```
 
 ---
 
 ## 11. Root
 
 After exploiting the Gogs arbitrary file write:
-
-```bash
-sudo su
-```
 
 Verify:
 
