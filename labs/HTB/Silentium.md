@@ -69,26 +69,10 @@ Flowise `3.0.5` is vulnerable to:
 
 Both vulnerabilities were fixed in Flowise `3.0.6`.
 
-### Extract email address from the JavaScript bundle
-
-Download the main JavaScript bundle:
-
-```bash
-curl -s http://staging.silentium.htb/assets/index-C6GKaUTA.js -o bundle.js
+The company's employees are listed on the website, so I tried using their email addresses and I found 
 ```
-
-Search for email addresses:
-
-```bash
-grep -oE '[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}' bundle.js | sort -u
-```
-
-Found:
-
-```text
 ben@silentium.htb
 ```
-
 ### Confirm the password-reset flow
 
 ```bash
