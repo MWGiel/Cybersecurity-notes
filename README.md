@@ -22,13 +22,3 @@
 | **CWES (Certified Web Exploitation Specialist)** | Hack The Box |
 
 ---
-
-##  Tools & Tech
-
-- Burp Suite
-- Python / Bash
-- Gobuster / FFUF
-- SQLmap
-- Nmap / Netcat
-
----
