@@ -2,8 +2,7 @@
 
 **Difficulty:** Easy  
 **Operating System:** FreeBSD (pfSense 2.1.3-RELEASE)  
-**Tools:** Nmap, Feroxbuster, cURL, Metasploit  
-**Flags:** `user.txt`, `root.txt`
+**Tools:** Nmap, Feroxbuster, cURL, Metasploit 
 
 ---
 
@@ -113,34 +112,6 @@ password: company defaults
 
 The phrase **“company defaults”** hints at the default pfSense password, `pfsense`.
 
-### Verify the credentials
-
-First, retrieve the login page and save the session cookie:
-
-```bash
-TARGET="https://<IP>"
-curl -k -s -c cookies.txt "$TARGET/index.php" -o login.html
-
-CSRF=$(grep -oP '__csrf_magic.*?value="\K[^"]+' login.html | head -1)
-```
-
-Then submit the login form:
-
-```bash
-curl -k -i -b cookies.txt -c cookies.txt -X POST "$TARGET/index.php" \
-  --data-urlencode "usernamefld=rohit" \
-  --data-urlencode "passwordfld=pfsense" \
-  --data-urlencode "login=Login" \
-  --data-urlencode "__csrf_magic=$CSRF"
-```
-
-A `302` response with `Location: /` indicates successful authentication.
-
-**Credentials:** `rohit` : `pfsense`
-
-> **Note:** Avoid parallel login attempts. Keep authentication testing limited and sequential, with small delays between attempts.
-
----
 
 ## 4. Exploitation - Authenticated Remote Code Execution
 
