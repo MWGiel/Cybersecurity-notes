@@ -163,24 +163,13 @@ From the root Meterpreter session:
 meterpreter > shell
 ```
 
-Then read the flag:
+Then read the flags:
 
 ```bash
 cat /root/root.txt
 ```
 
-**Flag:**
-
-```text
-d08c32a5d4f8c8b10e76eb51a69f1a86
-```
-
-### `user.txt`
-
-Locate and read the user flag:
-
 ```bash
-find / -name "user.txt" 2>/dev/null
 cat /home/rohit/user.txt
 ```
 
