@@ -80,9 +80,6 @@ uid=1000(ben) gid=1000(ben) groups=1000(ben),1001(operator)
 cat /home/ben/user.txt
 ```
 
-```text
-d7f5658d7dd48a33f110a7e1cb20c28f
-```
 
 ## 3. Write Primitive - PrivateBin Data Directory
 
@@ -118,9 +115,7 @@ Using Arcane's container management interface, a container is configured with th
 
 The host's root flag is then accessible from within the container at `/host/root/root.txt`.
 
-```text
-44b461d9b15702747207751177e0ce06
-```
+
 
 ## 7. Summary
 
