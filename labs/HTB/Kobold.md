@@ -29,7 +29,7 @@ PORT     STATE SERVICE  VERSION
 ### Add the Host to `/etc/hosts`
 
 ```bash
-echo "10.129.245.50 kobold.htb" | sudo tee -a /etc/hosts
+echo "<IP> kobold.htb" | sudo tee -a /etc/hosts
 ```
 
 ### Virtual Host Enumeration
@@ -49,7 +49,7 @@ ffuf -w /usr/share/seclists/Discovery/DNS/subdomains-top1million-5000.txt \
 Add them to `/etc/hosts`:
 
 ```bash
-echo "10.129.245.50 bin.kobold.htb mcp.kobold.htb" | sudo tee -a /etc/hosts
+echo "<IP> bin.kobold.htb mcp.kobold.htb" | sudo tee -a /etc/hosts
 ```
 
 ## 2. Foothold - MCPJam Inspector RCE (CVE-2026-23744)
