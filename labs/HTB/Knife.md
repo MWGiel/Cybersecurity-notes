@@ -1,8 +1,7 @@
 # Knife (HTB) From PHP 8.1.0-dev RCE to Root via Chef Knife
 
-**Target:** `<IP>` (Knife)
-**Difficulty:** Easy  
-**Vectors:** PHP 8.1.0-dev backdoor → RCE as `james` → sudo `knife` → root 
+- **Difficulty:** Easy  
+- **Vectors:** PHP 8.1.0-dev backdoor → RCE as `james` → sudo `knife` → root 
 
 ---
 
