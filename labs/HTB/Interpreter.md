@@ -9,13 +9,13 @@
 
 ## Table of Contents
 
-1. [Overview]
-2. [Enumeration]
-3. [Initial Access — Mirth Database]
-4. [Cracking the `sedric` Password]
-5. [SSH as `sedric`]
-6. [Privilege Escalation]
-7. [Lessons Learned]
+1. Overview
+2. Enumeration
+3. Initial Access — Mirth Database
+4. Cracking the `sedric` Password
+5. SSH as `sedric`
+6. Privilege Escalation
+7. Lessons Learned
 
 ---
 
