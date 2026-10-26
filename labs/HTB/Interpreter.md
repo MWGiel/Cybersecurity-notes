@@ -1,4 +1,4 @@
-# HTB Interpreter — Writeup
+# HTB Interpreter - Writeup
 
 **Machine:** Interpreter  
 **OS:** Linux  
@@ -11,7 +11,7 @@
 
 1. Overview
 2. Enumeration
-3. Initial Access — Mirth Database
+3. Initial Access - Mirth Database
 4. Cracking the `sedric` Password
 5. SSH as `sedric`
 6. Privilege Escalation
@@ -56,7 +56,7 @@ This version is vulnerable to CVE-2023-43208 (XStream deserialization RCE), but 
 
 ---
 
-## 2. Initial Access — Mirth Database
+## 2. Initial Access - Mirth Database
 
 The Mirth configuration file `/usr/local/mirthconnect/conf/mirth.properties` contains database credentials:
 
@@ -66,7 +66,7 @@ database.username = mirthdb
 database.password = MirthPass123!
 ```
 
-The database is reachable only from localhost. It can be queried after obtaining a local shell (see below). For this writeup, assume a low-privileged shell as `mirth` has already been obtained — for example, through CVE-2023-43208 or by abusing the Mirth REST API.
+The database is reachable only from localhost. It can be queried after obtaining a local shell (see below). For this writeup, assume a low-privileged shell as `mirth` has already been obtained - for example, through CVE-2023-43208 or by abusing the Mirth REST API.
 
 ### Dumping Users
 
